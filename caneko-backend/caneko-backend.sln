@@ -13,15 +13,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Domain", "4 - Domain", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5 - Infra", "5 - Infra", "{44C03A68-06EC-4006-B014-3071E30E8A08}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Caneko.System", "Caneko.System\Caneko.System.csproj", "{6078BCAC-1D3C-4AB3-8171-EE408BEF48E5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Caneko.System", "Caneko.System\Caneko.System.csproj", "{6078BCAC-1D3C-4AB3-8171-EE408BEF48E5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Caneko.API", "Caneko.API\Caneko.API.csproj", "{6145A649-1DC8-4C7A-8D9B-E2FCF9C5A093}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Caneko.API", "Caneko.API\Caneko.API.csproj", "{6145A649-1DC8-4C7A-8D9B-E2FCF9C5A093}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Caneko.Application", "Caneko.Application\Caneko.Application.csproj", "{59A3C387-EBBC-4A8D-9D3C-792DC2B9584A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Caneko.Application", "Caneko.Application\Caneko.Application.csproj", "{59A3C387-EBBC-4A8D-9D3C-792DC2B9584A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Caneko.Domain", "Caneko.Domain\Caneko.Domain.csproj", "{DD158C4F-8BA6-469E-9293-0A6C8EFCCFCA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Caneko.Domain", "Caneko.Domain\Caneko.Domain.csproj", "{DD158C4F-8BA6-469E-9293-0A6C8EFCCFCA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Caneko.Infra.MongoDb", "Caneko.Infra.MongoDb\Caneko.Infra.MongoDb.csproj", "{093AB9D9-1D78-44E1-8399-23CE806B0FBC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Caneko.Infra.MongoDb", "Caneko.Infra.MongoDb\Caneko.Infra.MongoDb.csproj", "{093AB9D9-1D78-44E1-8399-23CE806B0FBC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6 - Test", "6 - Test", "{51EB675F-4367-47C4-8227-CF5037D4CA99}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Caneko.Test", "Caneko.Test\Caneko.Test.csproj", "{DB96446E-456C-40B3-B4EC-EF0AB75A2569}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -49,6 +53,10 @@ Global
 		{093AB9D9-1D78-44E1-8399-23CE806B0FBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{093AB9D9-1D78-44E1-8399-23CE806B0FBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{093AB9D9-1D78-44E1-8399-23CE806B0FBC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB96446E-456C-40B3-B4EC-EF0AB75A2569}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB96446E-456C-40B3-B4EC-EF0AB75A2569}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB96446E-456C-40B3-B4EC-EF0AB75A2569}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB96446E-456C-40B3-B4EC-EF0AB75A2569}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -59,6 +67,7 @@ Global
 		{59A3C387-EBBC-4A8D-9D3C-792DC2B9584A} = {37B1B82F-0CA2-422F-A686-87FA924DC2A9}
 		{DD158C4F-8BA6-469E-9293-0A6C8EFCCFCA} = {4C92C5B2-4BAC-4CD8-A1B0-62309238B852}
 		{093AB9D9-1D78-44E1-8399-23CE806B0FBC} = {44C03A68-06EC-4006-B014-3071E30E8A08}
+		{DB96446E-456C-40B3-B4EC-EF0AB75A2569} = {51EB675F-4367-47C4-8227-CF5037D4CA99}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3EABD2CC-07D4-455A-9FEE-2C3DF22131EC}
