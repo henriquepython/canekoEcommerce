@@ -1,0 +1,55 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 5rem;
+    justify-content: space-around;
+    margin-top: 10px;
+}
+
+.container-box {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 5rem;
+    width: 28.125rem;
+}
+
+.container-button {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    align-items: center;
+}
+
+.button-custom {
+    font-size: 1.2rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 5rem;
+    padding: 0.7rem;
+    color: #221414;
+    font-weight: 500;
+}
+
+.button-custom-login {
+    background: #684A3D;
+    border-radius: 1rem;
+
+}
+
+.button-custom-simple:hover {
+    background: #684A3D;
+    border-radius: 1rem;
+
+}
+
+.container-item {
+    font-size: 2rem;
+}
+
+.mascot-img {
+    width: 4.375rem;
+    height: 4.375rem;
+}

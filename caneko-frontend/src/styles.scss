@@ -1,1 +1,22 @@
-/* You can add global styles to this file, and also import other style files */
+.primary-color {
+    color: #684A3D;
+}
+
+.secondary-color {
+    color: #B39C85;
+}
+
+.detail-color {
+    color: #3D2B22;
+}
+
+body {
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+    margin: 0;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    background-color: #B39C85;
+    color: #221414;
+}
