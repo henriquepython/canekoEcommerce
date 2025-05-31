@@ -27,21 +27,22 @@
     background: none;
     border: none;
     cursor: pointer;
-    width: 5rem;
+    width: 6rem;
     padding: 0.7rem;
-    color: #221414;
+    color: #2C1E14;
     font-weight: 500;
 }
 
 .button-custom-login {
-    background: #684A3D;
+    background-color: #684A3D;
     border-radius: 1rem;
-
+    color: #EAE2D6;
 }
 
 .button-custom-simple:hover {
-    background: #684A3D;
-    border-radius: 1rem;
+    background-color: #684A3D;
+    color: #EAE2D6;
+    border-radius: 0.5rem;
 
 }
 
