@@ -1,0 +1,21 @@
+.container {
+    width: 100%;
+}
+
+.container-footer-return {
+    color: #EAE2D6;
+    height: 2.188rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.container-footer-return:hover {
+    background-color: #B39C85;
+    color: #2C1E14;
+}
+  
+.divider {
+    border: 0.1rem solid #B39C85;
+}

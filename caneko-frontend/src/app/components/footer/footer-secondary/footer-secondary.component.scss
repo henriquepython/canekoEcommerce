@@ -1,0 +1,22 @@
+.container-footer-secondary {
+    height: 12.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-footer-secondary-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px
+}
+
+.img-secondary-item {
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+}
