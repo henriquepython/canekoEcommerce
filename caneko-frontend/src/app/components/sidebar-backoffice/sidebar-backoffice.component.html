@@ -1,0 +1,15 @@
+<div class="container">
+    <div class="box-container-title">
+        <h1 class="title">Backoffice</h1>
+    </div>
+
+    @for (item of items; track $index) {
+        <div class="sidebar-item">
+            <div class="sidebar-container-item">
+                <img class="img-icon" src="{{item.path}}"/>
+            </div>
+            {{item.name}}
+        </div>
+    }
+    
+</div>

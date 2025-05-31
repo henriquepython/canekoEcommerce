@@ -1,0 +1,11 @@
+<div class="container">
+    <app-sidebar-backoffice class="sidebar-column"/>
+    @switch (item) {
+        @case ("add") {<app-add-items class="box-show"/>}
+        @case ("edit") {<app-edit-item class="box-show"/>}
+        @case ("stock") {<app-stock-item class="box-show"/>}
+        @case ("order") {<app-order-backoffice class="box-show"/>}
+        @case ("report") {<app-report-backoffice class="box-show"/>}
+        @default {<app-init-backoffice class="box-show"/>}
+    }
+</div>
