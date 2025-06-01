@@ -3,8 +3,8 @@
         <h1 class="title">Backoffice</h1>
     </div>
 
-    @for (item of items; track $index) {
-        <div class="sidebar-item">
+    @for (item of items; track item.route) {
+        <div (click)="handleBackofficePage(item.route)" class="sidebar-item">
             <div class="sidebar-container-item">
                 <img class="img-icon" src="{{item.path}}"/>
             </div>

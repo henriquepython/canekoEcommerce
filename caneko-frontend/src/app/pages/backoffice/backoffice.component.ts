@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, inject } from '@angular/core';
 import { SidebarBackofficeComponent } from '../../components/sidebar-backoffice/sidebar-backoffice.component';
 import { AddItemsComponent } from '../../components/add-items/add-items.component';
 import { EditItemComponent } from '../../components/edit-item/edit-item.component';
@@ -6,6 +6,8 @@ import { StockItemComponent } from '../../components/stock-item/stock-item.compo
 import { OrderBackofficeComponent } from '../../components/order-backoffice/order-backoffice.component';
 import { ReportBackofficeComponent } from '../../components/report-backoffice/report-backoffice.component';
 import { InitBackofficeComponent } from '../../components/init-backoffice/init-backoffice.component';
+import { DashboardComponent } from '../../components/dashboard/dashboard.component';
+import { ConfigurationPortalComponent } from '../../components/configuration-portal/configuration-portal.component';
 
 @Component({
   selector: 'app-backoffice',
@@ -17,11 +19,18 @@ import { InitBackofficeComponent } from '../../components/init-backoffice/init-b
     StockItemComponent,
     OrderBackofficeComponent,
     ReportBackofficeComponent,
-    InitBackofficeComponent
+    InitBackofficeComponent,
+    DashboardComponent,
+    ConfigurationPortalComponent
   ],
   templateUrl: './backoffice.component.html',
   styleUrl: './backoffice.component.scss'
 })
+
 export class BackofficeComponent {
-  item: string = '';
+  routePage: string = '';
+
+  setRoutePageEvent = (routePage: string) => {
+    this.routePage = routePage;
+  }
 }
