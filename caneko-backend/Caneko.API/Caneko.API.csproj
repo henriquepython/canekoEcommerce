@@ -10,4 +10,9 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Caneko.Domain\Caneko.Domain.csproj" />
+    <ProjectReference Include="..\Caneko.Infra.MongoDb\Caneko.Infra.MongoDb.csproj" />
+  </ItemGroup>
+
 </Project>

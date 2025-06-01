@@ -25,7 +25,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Caneko.Infra.MongoDb", "Can
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6 - Test", "6 - Test", "{51EB675F-4367-47C4-8227-CF5037D4CA99}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Caneko.Test", "Caneko.Test\Caneko.Test.csproj", "{DB96446E-456C-40B3-B4EC-EF0AB75A2569}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Caneko.Test", "Caneko.Test\Caneko.Test.csproj", "{DB96446E-456C-40B3-B4EC-EF0AB75A2569}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
