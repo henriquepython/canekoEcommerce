@@ -1,4 +1,5 @@
 ﻿using Caneko.Domain.Interfaces.Service;
+using Caneko.Domain.Services;
 
 namespace Caneko.API.Registry
 {
