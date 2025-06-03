@@ -50,6 +50,15 @@
     font-size: 2rem;
 }
 
+.container-img-principal {
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
 .mascot-img {
     width: 4.375rem;
     height: 4.375rem;

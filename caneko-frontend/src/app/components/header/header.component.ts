@@ -14,4 +14,8 @@ export class HeaderComponent {
   redirectRoute = (route: string) => {
     this.router.navigate([route]);
   }
+
+  IsBackoffice = () => {
+    return this.router.url === '/backoffice';
+  }
 }

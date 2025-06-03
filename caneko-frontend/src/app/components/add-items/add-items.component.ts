@@ -1,11 +1,11 @@
 import { Component, inject } from '@angular/core';
 import { ProductService } from '../../services/product.service';
-import { CommonModule } from '@angular/common';
+import { SearchBarComponent } from '../search-bar/search-bar.component';
 
 @Component({
   selector: 'app-add-items',
   standalone: true,
-  imports: [],
+  imports: [SearchBarComponent],
   templateUrl: './add-items.component.html',
   styleUrl: './add-items.component.scss'
 })
