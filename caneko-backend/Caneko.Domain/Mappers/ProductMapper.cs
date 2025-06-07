@@ -14,7 +14,6 @@ namespace Caneko.Domain.Mappers
 
             return new Product
             {
-                Id = string.Empty,
                 SequencialId = string.Empty,
                 StockId = string.Empty,
                 Name = model.Name,
@@ -37,8 +36,8 @@ namespace Caneko.Domain.Mappers
                 Id = model.Id ?? string.Empty,
                 SequencialId = model.SequencialId,
                 Deleted = model.Deleted,
-                CreateDate = model.CreateDate ?? DateTime.UtcNow,
-                UpdateDate = model.UpdateDate ?? DateTime.UtcNow,
+                CreateDate = model.CreateDate,
+                UpdateDate = model.UpdateDate,
                 Name = model.Name,
                 Stock = new Stock() { Id = model.Id},
                 Category = model.Category,
@@ -59,7 +58,7 @@ namespace Caneko.Domain.Mappers
                 Deleted = model.Deleted,
                 SequencialId = model.SequencialId,
                 CreateDate = model.CreateDate,
-                UpdateDate = model.UpdateDate ?? DateTime.UtcNow,
+                UpdateDate = model.UpdateDate,
                 Name = model.Name,
                 Description = model.Description,
                 StockId = model.StockId,
@@ -81,7 +80,7 @@ namespace Caneko.Domain.Mappers
                 Deleted = entity.Deleted,
                 SequencialId = entity.SequencialId,
                 CreateDate = entity.CreateDate,
-                UpdateDate = entity.UpdateDate ?? DateTime.UtcNow,
+                UpdateDate = entity.UpdateDate,
                 Name = entity.Name,
                 Description = entity.Description,
                 StockId = entity.StockId,

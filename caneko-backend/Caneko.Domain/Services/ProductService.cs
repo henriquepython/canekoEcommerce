@@ -31,6 +31,8 @@ namespace Caneko.Domain.Services
 
         public async Task Delete(string id) => await _productRepository.Delete(id);
 
+        public async Task Disable(string id, bool isDisable) => await _productRepository.Disable(id, isDisable);
+
         public async Task<IEnumerable<ProductOutputFilterViewModel>> Filter(ProductInputFilterViewModel filter)
         {
             if (filter == null)
@@ -43,7 +45,7 @@ namespace Caneko.Domain.Services
             var models = result.Select(x => x.MapToOutputFilterViewModel());
 
             // Add stock filter  
-            if (filter.IsStock.HasValue)
+            if (filter.IsStock)
             {
                 var stocks = result.Select(x => x.StockId).Distinct().ToList();
 

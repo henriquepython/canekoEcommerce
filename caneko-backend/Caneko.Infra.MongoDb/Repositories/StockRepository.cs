@@ -3,11 +3,6 @@ using Caneko.Domain.Interfaces.Repository;
 using Caneko.System.Names;
 using Microsoft.Extensions.Configuration;
 using MongoDB.Driver;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Caneko.Infra.MongoDb.Repositories
 {
@@ -21,7 +16,7 @@ namespace Caneko.Infra.MongoDb.Repositories
             _configuration = configuration;
         }
 
-        public Task<Product> Create(Stock entity)
+        public Task<Stock> Create(Stock entity)
         {
             throw new NotImplementedException();
         }

@@ -5,8 +5,8 @@ namespace Caneko.Domain.ViewModels.Product
     public class ProductViewModel
     {
         public bool Deleted { get; set; }
-        public DateTime? CreateDate { get; set; }
-        public DateTime? UpdateDate { get; set; }
+        public DateOnly? CreateDate { get; set; }
+        public DateOnly? UpdateDate { get; set; }
         public required string Name { get; set; }
         public string? Description { get; set; }
         public required string SequencialId { get; set; }  // sequencia do produto

@@ -47,6 +47,13 @@
 .item-brand-style {
 }
 
+.item-quantity-style {
+}
+
+.item-name-style {
+    width: 5rem;
+}
+
 .item-category-style {
     width: 5rem;
 }
@@ -63,7 +70,15 @@
 }
 
 .item-actions-style {
-    background-color: black;
+    display: flex;
+    flex-direction: row;
+    gap: 0.6rem;
+}
+
+.actions {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
 }
 
 .item-date-style {
@@ -79,10 +94,11 @@
   bottom: 100%;
   left: 50%;
   transform: translateX(-50%);
-  background-color: #684A3D;
-  color: #FFFFFF;
+  background-color: #FFFFFF;
+  color: #000000;
   padding: 5px 10px;
   border-radius: 4px;
+  border: 1px solid #684A3D;
   white-space: nowrap;
   visibility: hidden;
   transition: opacity 0.3s ease;

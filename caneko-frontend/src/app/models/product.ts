@@ -9,8 +9,8 @@ export interface IProductFilterViewModel {
     id: string;
     sequencialId: string;
     deleted: boolean;
-    createDate?: Date; // tooltip data produto
-    updateDate?: Date; // tooltip data produto
+    createDate?: string; // tooltip data produto
+    updateDate?: string; // tooltip data produto
     name: string;
   
     // stock => usar tooltip estoque
@@ -109,8 +109,8 @@ export const mockProductFilter: IProductFilterViewModel = {
     id: '12345',
     sequencialId: '1001',
     deleted: false,
-    createDate: new Date('2024-01-10T08:30:00'),
-    updateDate: new Date('2024-02-15T14:45:00'),
+    createDate: '2024-01-10',
+    updateDate: '2024-02-15',
     name: 'Caneca Personalizada',
     stock: mockStock,
     category: mockCategory,

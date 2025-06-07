@@ -6,6 +6,7 @@ using Caneko.System.Util;
 using Microsoft.Extensions.Configuration;
 using MongoDB.Bson;
 using MongoDB.Driver;
+using SharpCompress.Common;
 
 namespace Caneko.Infra.MongoDb.Repositories
 {
@@ -27,7 +28,7 @@ namespace Caneko.Infra.MongoDb.Repositories
                     throw new ArgumentNullException(nameof(entity));
 
                 entity.SequencialId = NumberGenerator.GetShortHashByDateNow();
-                entity.CreateDate = DateTime.Now;
+                entity.CreateDate = DateOnly.FromDateTime(DateTime.Now);
                 entity.Deleted = false;
 
                 await _Collection.InsertOneAsync(entity);
@@ -144,7 +145,7 @@ namespace Caneko.Infra.MongoDb.Repositories
                     ReturnDocument = ReturnDocument.After
                 };
 
-                entity.UpdateDate = DateTime.Now;
+                entity.UpdateDate = DateOnly.FromDateTime(DateTime.Now);
 
                 var result = await _Collection.FindOneAndReplaceAsync(filter, entity, options);
 
@@ -154,6 +155,20 @@ namespace Caneko.Infra.MongoDb.Repositories
             {
                 throw new ArgumentException("Ocorreu um erro", Ex);
             }
+        }
+
+        public async Task Disable(string id, bool isDisable )
+        {
+            var filter = Builders<Product>.Filter.And(
+                    Builders<Product>.Filter.Eq(x => x.Id, id),
+                    Builders<Product>.Filter.Eq(x => x.Deleted, false)
+                );
+
+            var update = Builders<Product>.Update
+                .Set(p => p.Deleted, isDisable)   // Atualiza o preço
+                .CurrentDate(p => p.UpdateDate); // Adiciona a data de atualização
+
+            var result = await _Collection.FindOneAndUpdateAsync(filter, update);
         }
     }
 }

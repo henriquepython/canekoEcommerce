@@ -15,10 +15,10 @@ namespace Caneko.Domain.ViewModels.Product
         public bool Deleted { get; set; }
 
         [JsonPropertyName("createDate")]
-        public DateTime? CreateDate { get; set; } // tooltip data produto
+        public DateOnly? CreateDate { get; set; } // tooltip data produto
 
         [JsonPropertyName("updateDate")]
-        public DateTime? UpdateDate { get; set; } // tooltip data produto
+        public DateOnly? UpdateDate { get; set; } // tooltip data produto
 
         [JsonPropertyName("name")]
         public required string Name { get; set; }

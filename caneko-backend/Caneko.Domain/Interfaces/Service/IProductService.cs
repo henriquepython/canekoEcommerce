@@ -10,5 +10,6 @@ namespace Caneko.Domain.Interfaces.Service
         Task<ProductViewModel> Create(ProductCreateViewModel entity);
         Task<ProductViewModel> Update(string id, ProductUpdateViewModel entity);
         Task Delete(string id);
+        Task Disable(string id, bool isDisable);
     }
 }

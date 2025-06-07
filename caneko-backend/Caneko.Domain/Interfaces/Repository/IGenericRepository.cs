@@ -6,7 +6,7 @@ namespace Caneko.Domain.Interfaces.Repository
     {
         Task<IEnumerable<T>> GetAll();
         Task<T> FindOne(string id);
-        Task<Product> Create(T entity);
+        Task<T> Create(T entity);
         Task<T> Update(string id, T entity);
         Task Delete(string id);
     }

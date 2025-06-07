@@ -9,7 +9,13 @@
                 Código
             </div>
             <div>
+                Nome
+            </div>
+            <div>
                 Marca
+            </div>
+            <div>
+                Quantidade
             </div>
             <div>
                 Categoria
@@ -24,13 +30,19 @@
                 Ultima Atualização
             </div>
         </div>
-        @for (item of productsMock; track $index) {
+        @for (item of (items$ | async); track $index) {
             <div class="item">
                 <div class="item-id-style">
                     {{item.sequencialId}}
                 </div>
+                <div class="item-name-style">
+                    {{item.name}}
+                </div>
                 <div class="item-brand-style">
-                    {{item.details?.brand}}
+                    {{item.details?.brand || "Sem Marca"}}
+                </div>
+                <div class="item-quantity-style">
+                    {{item.stock?.quantityTotal}}
                 </div>
                 <div class="item-category-style">
                     {{item.category?.name}}
@@ -38,20 +50,34 @@
 
                 <div class="item-stock-style">
                     <img class="item-tooltip-stock-style" src="./assets/estoque-pronto.png"/>
-                    <div class="tooltip-container">
-                        <div>Preço Fabrica: R$ {{item.stock?.factoryPrice}}</div>
-                        <div>Magem Lucro: {{item.stock?.profitMarginPercent}}%</div>
-                        <div>Preço Venda: R$ {{item.stock?.salePrice}}</div>
-                        <div>Atualização Preço: {{item.stock?.updateDate?.getDate()}}/{{item.stock?.updateDate?.getMonth()}}/{{item.stock?.updateDate?.getFullYear()}}</div>
-                        <div>Quantidade: {{item.stock?.quantityTotal}} und</div>
-                    </div>
+                    @if (item?.stock?.productId) {
+                        <div class="tooltip-container">
+                            <div>Preço Fabrica: R$ {{item.stock?.factoryPrice}}</div>
+                            <div>Magem Lucro: {{item.stock?.profitMarginPercent}}%</div>
+                            <div>Preço Venda: R$ {{item.stock?.salePrice}}</div>
+                            <div>Atualização Preço: {{item?.stock?.createDate ? item?.stock?.createDate : item?.stock?.updateDate}}</div>
+                            <div>Quantidade: {{item.stock?.quantityTotal}} und</div>
+                        </div>
+                    } @else {
+                        <div class="tooltip-container">
+                            <div>Não tem estoque cadastrado</div>
+                        </div>
+                    }
                 </div>
 
                 <div class="item-actions-style">
-                    ssssssssssss
+                    <img title="Editar" class="actions" src="./assets/botao-editar.png"/>
+                    
+                    @if (item.deleted) {
+                        <img (click)="disableProduct(item.id, !item.deleted)"  title="Habilitar" class="actions" src="./assets/habilitar.png"/>
+                    } @else {
+                        <img (click)="disableProduct(item.id, !item.deleted)" title="Desabilitar" class="actions" src="./assets/desabilitar.png"/>
+                    }
+
+                    <img  title="Excluir" class="actions" src="./assets/excluir.png"/>
                 </div>
                 <div class="item-date-style">
-                    {{item.updateDate?.getDate()}}/{{item.updateDate?.getMonth()}}/{{item.updateDate?.getFullYear()}}
+                    {{item?.createDate ? item?.createDate : item?.updateDate}}
                 </div>
             </div>
         }

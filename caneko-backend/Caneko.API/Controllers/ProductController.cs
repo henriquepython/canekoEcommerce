@@ -119,5 +119,19 @@ namespace Caneko.API.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, $"Internal server error: {ex.Message}");
             }
         }
+
+        [HttpPatch("disable:{id}")]
+        public async Task<IActionResult> DisableProduct(string id, bool isDisable)
+        {
+            try
+            {
+                await _productService.Disable(id, isDisable);
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Internal server error: {ex.Message}");
+            }
+        }
     }
 }

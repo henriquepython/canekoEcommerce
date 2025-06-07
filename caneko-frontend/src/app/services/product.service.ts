@@ -35,10 +35,14 @@ export class ProductService {
   }
 
   deleteProduct(id: string) {
-    const result = this._http.delete(`${this.apiProduct}/${id}`);
+    this._http.delete(`${this.apiProduct}/${id}`);
   }
 
-  disableProduct() {
+  disableProduct(id: string, isDisable: boolean) {
+    const params = new HttpParams()
+      .set('id', id )
+      .set('isDisable', isDisable) ;
 
+    this._http.get<IProductFilterViewModel[]>(`${this.apiProduct}/disable`, {params});
   }
 }

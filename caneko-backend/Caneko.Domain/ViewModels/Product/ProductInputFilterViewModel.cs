@@ -8,6 +8,6 @@ namespace Caneko.Domain.ViewModels.Product
         public string? Search { get; set; } = string.Empty;
 
         [JsonPropertyName("isStock")]
-        public bool? IsStock { get; set; } = false;// true = em estoque, false = sem estoque
+        public bool IsStock { get; set; } = false;// true = em estoque, false = sem estoque
     }
 }

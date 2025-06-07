@@ -1,8 +1,7 @@
-import { Component, OnDestroy, OnInit, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ProductService } from '../../services/product.service';
 import { SearchBarComponent } from '../search-bar/search-bar.component';
-import { IProductFilterViewModel, mockProductFilter } from '../../models/product';
-import { Subject, takeUntil } from 'rxjs';
+import { mockProductFilter } from '../../models/product';
 import { AsyncPipe } from '@angular/common';
 
 @Component({
@@ -18,9 +17,17 @@ export class AddItemsComponent {
   items$ = this._productService.filter({search: '', isStock: false, pageNumber: 1, pageSize: 10});
   productsMock = [mockProductFilter, mockProductFilter, mockProductFilter, mockProductFilter, mockProductFilter, mockProductFilter, mockProductFilter];
 
-  constructor() {}
+  constructor() { }
 
   async filter() {
     return await this._productService.filter({search: '', isStock: false, pageNumber: 1, pageSize: 10});
+  }
+
+  async deleteProduct(id: string) {
+    await this._productService.deleteProduct(id);
+  }
+
+  async disableProduct(id: string, isDisable: boolean) {
+    await this._productService.disableProduct(id, isDisable);
   }
 }
