@@ -120,7 +120,7 @@ namespace Caneko.API.Controllers
             }
         }
 
-        [HttpPatch("disable:{id}")]
+        [HttpPatch("disable")]
         public async Task<IActionResult> DisableProduct(string id, bool isDisable)
         {
             try
