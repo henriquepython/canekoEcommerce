@@ -31,6 +31,21 @@ namespace Caneko.API.Controllers
             }
         }
 
+        [HttpGet("filter")]
+        public async Task<ActionResult<IEnumerable<ProductOutputFilterViewModel>>> Filter([FromQuery] ProductInputFilterViewModel filter)
+        {
+            try
+            {
+                var products = await _productService.Filter(filter);
+                return Ok(products);
+
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Internal server error: {ex.Message}");
+            }
+        }
+
         [HttpGet("{id}")]
         public async Task<ActionResult<Product>> GetById(string id)
         {

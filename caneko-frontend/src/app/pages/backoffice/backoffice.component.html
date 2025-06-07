@@ -3,13 +3,14 @@
         (selectorPageEmit)="setRoutePageEvent($event)"
         class="sidebar-column"
      />
+
     @switch (routePage) {
         @case ("init") {<app-init-backoffice class="box-show"/>}
         @case ("dashboard") {<app-dashboard class="box-show"/>}
-        @case ("add") {<app-add-items class="box-show"/>}
-        @case ("edit") {<app-edit-item class="box-show"/>}
+        @case ("products") {<app-add-items class="box-show"/>}
         @case ("stock") {<app-stock-item class="box-show"/>}
         @case ("order") {<app-order-backoffice class="box-show"/>}
+        @case ("marketing") {<app-marketing class="box-show"/>}
         @case ("report") {<app-report-backoffice class="box-show"/>}
         @case ("config") {<app-configuration-portal class="box-show"/>}
         @default {<app-init-backoffice class="box-show"/>}

@@ -1,24 +1,32 @@
 <div class="container">
     <div class="container-box">
-        <img class="mascot-img" src="./assets/header-mascot.png"/>
-        <div class="container-item">CANEKO</div>
+        <div class="container-img-principal" (click)="redirectRoute('/')">
+            <img class="mascot-img" src="./assets/header-mascot.png" />
+            <div class="container-item">CANEKO</div>
+        </div>
     </div>
     <div class="container-button">
-        <button 
-            class="button-custom button-custom-simple" 
-            (click)="redirectRoute('/')">
-            Home
-        </button>
-        <button 
-            class="button-custom button-custom-simple" 
-            (click)="redirectRoute('/')">
-            About
-        </button>
-        <button 
-            class="button-custom button-custom-simple" 
-            (click)="redirectRoute('/')">
-            Explore
-        </button>
+        @if(!IsBackoffice()) {
+
+            <button 
+                class="button-custom button-custom-simple" 
+                (click)="redirectRoute('/')"
+            >
+                    Home
+            </button>
+            <button 
+                class="button-custom button-custom-simple" 
+                (click)="redirectRoute('backoffice')"
+            >
+                Backoffice
+            </button>
+            <button 
+                class="button-custom button-custom-simple" 
+                (click)="redirectRoute('/')"
+            >
+                Explore
+            </button>
+        }
         <button 
             class="button-custom button-custom-login" 
             (click)="redirectRoute('/')">

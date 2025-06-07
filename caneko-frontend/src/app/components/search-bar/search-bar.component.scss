@@ -1,0 +1,33 @@
+.search-container {
+    width: 50rem;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    margin-top: 4rem;
+}
+
+.search-input {
+    width: 100%;
+    padding: 0.7rem;
+    font-size: 1.4rem;
+    border: 2px solid #684A3D;
+    border-radius: 1rem;
+    background-color: #FFFFFF;
+    color: #413029;
+}
+
+.search-input::placeholder {
+    font-size: 1.4rem;
+    color: #413029;
+}
+
+.img-search {
+    width: 1.875rem;
+    height: 1.875rem;
+    border: 2px solid #684A3D;
+    padding: 0.5rem;
+    border-radius: 1rem;
+    cursor: pointer;
+}

@@ -3,12 +3,12 @@
         <h1 class="title">Backoffice</h1>
     </div>
 
-    @for (item of items; track item.route) {
-        <div (click)="handleBackofficePage(item.route)" class="sidebar-item">
+    @for (itemSide of itemsSidebar; track itemSide) {
+        <div (click)="handleBackofficePage(itemSide.route)" class="sidebar-item">
             <div class="sidebar-container-item">
-                <img class="img-icon" src="{{item.path}}"/>
+                <img class="img-icon" src="{{itemSide.path}}"/>
             </div>
-            {{item.name}}
+            {{itemSide.name}}
         </div>
     }
     

@@ -5,6 +5,7 @@ namespace Caneko.Domain.Interfaces.Service
     public interface IProductService
     {
         Task<IEnumerable<ProductViewModel>> GetAll();
+        Task<IEnumerable<ProductOutputFilterViewModel>> Filter(ProductInputFilterViewModel filter);
         Task<ProductViewModel> FindOne(string id);
         Task<ProductViewModel> Create(ProductCreateViewModel entity);
         Task<ProductViewModel> Update(string id, ProductUpdateViewModel entity);

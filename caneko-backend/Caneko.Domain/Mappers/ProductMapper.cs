@@ -14,20 +14,36 @@ namespace Caneko.Domain.Mappers
 
             return new Product
             {
+                Id = string.Empty,
+                SequencialId = string.Empty,
+                StockId = string.Empty,
+                Name = model.Name,
+                Description = model.Description,
+                Category = model.Category,
+                Images = model.Images,
+                Details = model.Details,
+            };
+        }
+
+        public static ProductOutputFilterViewModel MapToOutputFilterViewModel(this Product model)
+        {
+            if (model == null)
+            {
+                throw new ArgumentNullException(nameof(model), "Product model cannot be null");
+            }
+
+            return new ProductOutputFilterViewModel
+            {
+                Id = model.Id ?? string.Empty,
+                SequencialId = model.SequencialId,
                 Deleted = model.Deleted,
                 CreateDate = model.CreateDate ?? DateTime.UtcNow,
                 UpdateDate = model.UpdateDate ?? DateTime.UtcNow,
                 Name = model.Name,
-                Description = model.Description,
-                StockId = model.StockId,
-                CategoryId = model.CategoryId,
-                ImagePrincipalUrl = model.ImagePrincipalUrl,
+                Stock = new Stock() { Id = model.Id},
+                Category = model.Category,
+                Images = model.Images,
                 Details = model.Details,
-                ImageSecondaryUrl = model.ImageSecondaryUrl,
-                IsHighlight = model.IsHighlight,
-                TypeColor = model.TypeColor,
-                TypeUnits = model.TypeUnits,
-                SupplierSale = model.SupplierSale
             };
         }
 
@@ -41,19 +57,15 @@ namespace Caneko.Domain.Mappers
             return new Product
             {
                 Deleted = model.Deleted,
+                SequencialId = model.SequencialId,
                 CreateDate = model.CreateDate,
                 UpdateDate = model.UpdateDate ?? DateTime.UtcNow,
                 Name = model.Name,
                 Description = model.Description,
                 StockId = model.StockId,
-                CategoryId = model.CategoryId,
-                ImagePrincipalUrl = model.ImagePrincipalUrl,
+                Category = model.Category,
+                Images = model.Images,
                 Details = model.Details,
-                ImageSecondaryUrl = model.ImageSecondaryUrl,
-                IsHighlight = model.IsHighlight,
-                TypeColor = model.TypeColor,
-                TypeUnits = model.TypeUnits,
-                SupplierSale = model.SupplierSale
             };
         }
 
@@ -66,21 +78,16 @@ namespace Caneko.Domain.Mappers
 
             return new ProductViewModel
             {
-                Id = entity.Id,
                 Deleted = entity.Deleted,
+                SequencialId = entity.SequencialId,
                 CreateDate = entity.CreateDate,
-                UpdateDate = entity.UpdateDate,
+                UpdateDate = entity.UpdateDate ?? DateTime.UtcNow,
                 Name = entity.Name,
                 Description = entity.Description,
                 StockId = entity.StockId,
-                CategoryId = entity.CategoryId,
-                ImagePrincipalUrl = entity.ImagePrincipalUrl,
+                Category = entity.Category,
+                Images = entity.Images,
                 Details = entity.Details,
-                ImageSecondaryUrl = entity.ImageSecondaryUrl,
-                IsHighlight = entity.IsHighlight,
-                TypeColor = entity.TypeColor,
-                TypeUnits = entity.TypeUnits,
-                SupplierSale = entity.SupplierSale
             };
         }
     }

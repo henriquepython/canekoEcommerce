@@ -15,19 +15,19 @@
 }
 
 .title {
-    font-size: 60px;
+    font-size: 3rem;
 }
 
 .sidebar-container-item {
-    margin-left: 20px;
+    margin-left: 1.25rem;
 }
 
 .sidebar-item {
     display: flex;
     align-items: center;
-    gap: 10px;
-    font-size: 35px;
-    height: 80px;
+    gap: 0.625rem;
+    font-size: 2rem;
+    height: 5rem;
     width: 100%;
     cursor: pointer;
 }
@@ -38,6 +38,6 @@
 }
 
 .img-icon{
-    width: 30px;
-    height: 30px;
+    width: 1.875rem;
+    height: 1.875rem;
 }

@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { ISideBarBackoffice } from '../../models/sidebarBackofficeButtons';
+import { ISideBarBackoffice } from '../../models/backoffice';
 
 @Component({
   selector: 'app-sidebar-backoffice',
@@ -9,15 +9,15 @@ import { ISideBarBackoffice } from '../../models/sidebarBackofficeButtons';
 })
 
 export class SidebarBackofficeComponent {
-    items: ISideBarBackoffice[] = [
+    itemsSidebar: ISideBarBackoffice[] = [
       {name: "Início", path: "./assets/botao-de-inicio.png", route: "init"},
       {name: "Dashboard", path: "./assets/painel.png", route: "dashboard"},
-      {name: "Adicionar Produto", path: "./assets/mais.png", route: "add"}, 
-      {name: "Editar Produto", path: "./assets/editar.png", route: "edit"},
+      {name: "Produtos", path: "./assets/mais.png", route: "products"}, 
       {name: "Estoque", path: "./assets/trabalhador-carregando-caixas.png", route: "stock"},
       {name: "Pedido", path: "./assets/lista-de-controle.png", route: "order"},
+      {name: "Marketing", path: "./assets/marketing.png", route: "marketing"},
       {name: "Relatório", path: "./assets/relatorio.png", route: "report"},
-      {name: "Configurações", path: "./assets/painel-de-controle.png", route: "config"}
+      {name: "Configurações", path: "./assets/configuracoes.png", route: "config"}
     ]
 
     @Output() selectorPageEmit = new EventEmitter<string>();

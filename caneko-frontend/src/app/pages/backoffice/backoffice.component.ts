@@ -1,7 +1,7 @@
-import { Component, Output, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { SidebarBackofficeComponent } from '../../components/sidebar-backoffice/sidebar-backoffice.component';
 import { AddItemsComponent } from '../../components/add-items/add-items.component';
-import { EditItemComponent } from '../../components/edit-item/edit-item.component';
+import { MarketingComponent } from '../../components/marketing/marketing.component';
 import { StockItemComponent } from '../../components/stock-item/stock-item.component';
 import { OrderBackofficeComponent } from '../../components/order-backoffice/order-backoffice.component';
 import { ReportBackofficeComponent } from '../../components/report-backoffice/report-backoffice.component';
@@ -15,14 +15,14 @@ import { ConfigurationPortalComponent } from '../../components/configuration-por
   imports: [
     SidebarBackofficeComponent,
     AddItemsComponent,
-    EditItemComponent,
+    MarketingComponent,
     StockItemComponent,
     OrderBackofficeComponent,
     ReportBackofficeComponent,
     InitBackofficeComponent,
     DashboardComponent,
     ConfigurationPortalComponent
-  ],
+],
   templateUrl: './backoffice.component.html',
   styleUrl: './backoffice.component.scss'
 })
