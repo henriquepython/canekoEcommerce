@@ -7,7 +7,7 @@ namespace Caneko.API.Registry
     {
         public static void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton<IProductService, ProductService>();
+            services.AddScoped<IProductService, ProductService>();
         }
     }
 }

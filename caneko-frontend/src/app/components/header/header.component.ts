@@ -18,4 +18,5 @@ export class HeaderComponent {
   IsBackoffice = () => {
     return this.router.url === '/backoffice';
   }
+
 }

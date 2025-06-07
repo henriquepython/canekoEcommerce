@@ -15,5 +15,10 @@
         public string? Height { get; set; }
         public string? Width { get; set; }
         public string? Weight { get; set; }
+        public string[]? TypeColor { get; set; } // tipos de cores para vender
+        public string[]? TypeUnits { get; set; } // tamanhos diversos
+        public bool IsHighlight { get; set; } // destaque
+
+        public string? SupplierSale { get; set; } // quem vende é a proopria caneko?
     }
 }

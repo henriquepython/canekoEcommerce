@@ -7,7 +7,8 @@ namespace Caneko.API.Registry
     {
         public static void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton<IProductRepository,ProductRepository>();
+            services.AddSingleton<IProductRepository, ProductRepository>();
+            services.AddSingleton<IStockRepository, StockRepository>();
         }
     }
 }

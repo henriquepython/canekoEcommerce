@@ -1,3 +1,59 @@
 <div class="container">
     <app-search-bar />
+    <div class="list-items">
+        <!-- @for (item of (items$ | async); track $index) {
+            <div class="item">{{item.name}}</div>
+        } -->
+        <div class="item-title">
+            <div>
+                Código
+            </div>
+            <div>
+                Marca
+            </div>
+            <div>
+                Categoria
+            </div>
+            <div>
+                Estoque
+            </div>
+            <div>
+               Ações
+            </div>
+            <div>
+                Ultima Atualização
+            </div>
+        </div>
+        @for (item of productsMock; track $index) {
+            <div class="item">
+                <div class="item-id-style">
+                    {{item.sequencialId}}
+                </div>
+                <div class="item-brand-style">
+                    {{item.details?.brand}}
+                </div>
+                <div class="item-category-style">
+                    {{item.category?.name}}
+                </div>
+
+                <div class="item-stock-style">
+                    <img class="item-tooltip-stock-style" src="./assets/estoque-pronto.png"/>
+                    <div class="tooltip-container">
+                        <div>Preço Fabrica: R$ {{item.stock?.factoryPrice}}</div>
+                        <div>Magem Lucro: {{item.stock?.profitMarginPercent}}%</div>
+                        <div>Preço Venda: R$ {{item.stock?.salePrice}}</div>
+                        <div>Atualização Preço: {{item.stock?.updateDate?.getDate()}}/{{item.stock?.updateDate?.getMonth()}}/{{item.stock?.updateDate?.getFullYear()}}</div>
+                        <div>Quantidade: {{item.stock?.quantityTotal}} und</div>
+                    </div>
+                </div>
+
+                <div class="item-actions-style">
+                    ssssssssssss
+                </div>
+                <div class="item-date-style">
+                    {{item.updateDate?.getDate()}}/{{item.updateDate?.getMonth()}}/{{item.updateDate?.getFullYear()}}
+                </div>
+            </div>
+        }
+    </div>
 </div>

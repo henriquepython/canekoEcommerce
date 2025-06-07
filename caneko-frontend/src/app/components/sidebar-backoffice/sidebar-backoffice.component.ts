@@ -9,7 +9,7 @@ import { ISideBarBackoffice } from '../../models/backoffice';
 })
 
 export class SidebarBackofficeComponent {
-    items: ISideBarBackoffice[] = [
+    itemsSidebar: ISideBarBackoffice[] = [
       {name: "Início", path: "./assets/botao-de-inicio.png", route: "init"},
       {name: "Dashboard", path: "./assets/painel.png", route: "dashboard"},
       {name: "Produtos", path: "./assets/mais.png", route: "products"}, 
