@@ -33,7 +33,7 @@ namespace Caneko.Domain.Services
 
         public async Task Disable(string id, bool isDisable) => await _productRepository.Disable(id, isDisable);
 
-        public async Task<IEnumerable<ProductOutputFilterViewModel>> Filter(ProductInputFilterViewModel filter)
+        public async Task<ProductOutputFilterPaginationViewModel> Filter(ProductInputFilterViewModel filter)
         {
             if (filter == null)
             {
@@ -42,13 +42,15 @@ namespace Caneko.Domain.Services
 
             var result = await _productRepository.Filter(filter);
 
-            var models = result.Select(x => x.MapToOutputFilterViewModel());
+            var models = result.products.Select(x => x.MapToOutputFilterViewModel());
 
-            // Add stock filter  
-            if (filter.IsStock)
+             var stocks = result.products.Select(x => x.StockId)
+                .Where(y => !string.IsNullOrWhiteSpace(y))
+                .Distinct()
+                .ToList();
+
+            if (filter.IsStock && stocks != null && stocks.Any())
             {
-                var stocks = result.Select(x => x.StockId).Distinct().ToList();
-
                 var stocksItems = await _stockRepository.FindByIds(stocks);
 
                 models = models.Select(x =>
@@ -62,7 +64,15 @@ namespace Caneko.Domain.Services
                 }).ToList();
             }
 
-            return models;
+            var data = new ProductOutputFilterPaginationViewModel
+            {
+                Products = models,
+                Total = (int)result.totalItems,
+                PageSize = filter.PageSize,
+                PageNumber = filter.PageNumber
+            };
+
+            return data;
         }
 
         public async Task<ProductViewModel> FindOne(string id)

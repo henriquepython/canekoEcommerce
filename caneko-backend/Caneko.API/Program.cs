@@ -24,9 +24,9 @@ app.UseHttpsRedirection();
 
 app.UseCors(x =>
     {
-        x.WithOrigins("http://localhost:4200")
-            .WithHeaders()
-            .WithMethods();
+        x.AllowAnyOrigin()
+            .AllowAnyHeader()
+            .AllowAnyMethod();
     }
 );
 

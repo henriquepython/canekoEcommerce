@@ -1,85 +1,94 @@
+@if (isEditModal) {
+    <app-edit-items (CloseModalEditItemEmit)="closeModal($event)"/>
+}
 <div class="container">
-    <app-search-bar />
-    <div class="list-items">
-        <!-- @for (item of (items$ | async); track $index) {
-            <div class="item">{{item.name}}</div>
-        } -->
-        <div class="item-title">
-            <div>
-                Código
-            </div>
-            <div>
+    <app-search-bar (SearchInputEmit)="filter($event)" />
+    <table class="list-items">
+        <thead class="header-style">
+            <th>
+                Cód
+            </th>
+            <th>
                 Nome
-            </div>
-            <div>
+            </th>
+            <th>
                 Marca
-            </div>
-            <div>
-                Quantidade
-            </div>
-            <div>
+            </th>
+            <th>
+                Qtd
+            </th>
+            <th>
                 Categoria
-            </div>
-            <div>
+            </th>
+            <th>
                 Estoque
-            </div>
-            <div>
+            </th>
+            <th>
                Ações
-            </div>
-            <div>
-                Ultima Atualização
-            </div>
-        </div>
-        @for (item of (items$ | async); track $index) {
-            <div class="item">
-                <div class="item-id-style">
-                    {{item.sequencialId}}
-                </div>
-                <div class="item-name-style">
-                    {{item.name}}
-                </div>
-                <div class="item-brand-style">
-                    {{item.details?.brand || "Sem Marca"}}
-                </div>
-                <div class="item-quantity-style">
-                    {{item.stock?.quantityTotal}}
-                </div>
-                <div class="item-category-style">
-                    {{item.category?.name}}
-                </div>
-
-                <div class="item-stock-style">
-                    <img class="item-tooltip-stock-style" src="./assets/estoque-pronto.png"/>
-                    @if (item?.stock?.productId) {
-                        <div class="tooltip-container">
-                            <div>Preço Fabrica: R$ {{item.stock?.factoryPrice}}</div>
-                            <div>Magem Lucro: {{item.stock?.profitMarginPercent}}%</div>
-                            <div>Preço Venda: R$ {{item.stock?.salePrice}}</div>
-                            <div>Atualização Preço: {{item?.stock?.createDate ? item?.stock?.createDate : item?.stock?.updateDate}}</div>
-                            <div>Quantidade: {{item.stock?.quantityTotal}} und</div>
-                        </div>
-                    } @else {
-                        <div class="tooltip-container">
-                            <div>Não tem estoque cadastrado</div>
-                        </div>
-                    }
-                </div>
-
-                <div class="item-actions-style">
-                    <img title="Editar" class="actions" src="./assets/botao-editar.png"/>
+            </th>
+            <th>
+                Atualização
+            </th>
+        </thead>
+        <tbody>
+            @for (item of items; track $index) {
+                <tr class="item">
+                    <td class="item-id-style">
+                        {{item.sequencialId}}
+                    </td>
+                    <td class="item-name-style">
+                        {{item.name}}
+                    </td>
+                    <td class="item-brand-style">
+                        {{item.details?.brand || "Sem Marca"}}
+                    </td>
+                    <td class="item-quantity-style">
+                        {{item.stock?.quantityTotal}}
+                    </td>
+                    <td class="item-category-style">
+                        {{item.category?.name}}
+                    </td>
+                
+                    <td class="item-stock-style">
+                        <img class="item-tooltip-stock-style" src="./assets/estoque-pronto.png"/>
+                        @if (item?.stock?.productId) {
+                            <div class="tooltip-container">
+                                <div>Preço Fabrica: R$ {{item.stock?.factoryPrice}}</div>
+                                <div>Magem Lucro: {{item.stock?.profitMarginPercent}}%</div>
+                                <div>Preço Venda: R$ {{item.stock?.salePrice}}</div>
+                                <div>Atualização Preço: {{item?.stock?.createDate ? item?.stock?.createDate : item?.stock?.updateDate}}</div>
+                                <div>Quantidade: {{item.stock?.quantityTotal}} und</div>
+                            </div>
+                        } @else {
+                            <div class="tooltip-container">
+                                <div>Não tem estoque cadastrado</div>
+                            </div>
+                        }
+                    </td>
                     
-                    @if (item.deleted) {
-                        <img (click)="disableProduct(item.id, !item.deleted)"  title="Habilitar" class="actions" src="./assets/habilitar.png"/>
-                    } @else {
-                        <img (click)="disableProduct(item.id, !item.deleted)" title="Desabilitar" class="actions" src="./assets/desabilitar.png"/>
-                    }
-
-                    <img  title="Excluir" class="actions" src="./assets/excluir.png"/>
-                </div>
-                <div class="item-date-style">
-                    {{item?.createDate ? item?.createDate : item?.updateDate}}
-                </div>
-            </div>
-        }
-    </div>
+                    <td class="item-actions-style">
+                        <img title="Editar" (click)="openModal()" class="actions" src="./assets/botao-editar.png"/>
+                        
+                        @if (item.deleted) {
+                            <img (click)="disableProduct(item.id, !item.deleted)"  title="Habilitar" class="actions" src="./assets/habilitar.png"/>
+                        } @else {
+                            <img (click)="disableProduct(item.id, !item.deleted)" title="Desabilitar" class="actions" src="./assets/desabilitar.png"/>
+                        }
+                        
+                        <img  title="Excluir" class="actions" (click)="deleteProduct(item.id)" src="./assets/excluir.png"/>
+                    </td>
+                    <td class="item-date-style">
+                        {{item?.createDate ? item?.createDate : item?.updateDate}}
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <tfoot>
+        <app-pagination
+            [totalPages]="totalPages"
+            [currentPage]="currentPage"
+            (pageChange)="filter(search, $event)"
+        />
+    </tfoot>
 </div>

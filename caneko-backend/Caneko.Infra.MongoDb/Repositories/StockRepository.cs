@@ -26,7 +26,7 @@ namespace Caneko.Infra.MongoDb.Repositories
             throw new NotImplementedException();
         }
 
-        public async Task<IEnumerable<Stock>> FindByIds(IEnumerable<string> ids)
+        public async Task<List<Stock>> FindByIds(List<string> ids)
         {
             var stocksItems = await _Collection.FindAsync(x => ids.Contains(x.Id) && !x.Deleted);
 

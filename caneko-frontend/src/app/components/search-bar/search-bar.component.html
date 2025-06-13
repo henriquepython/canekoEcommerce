@@ -1,4 +1,14 @@
 <div class="search-container">
-    <input type="text" placeholder="🔍 Buscar produtos....." class="search-input">
-    <img class="img-search" src="./assets/procurar.png"/>
+    <input 
+        class="search-input"
+        type="text"
+        placeholder="🔍 Buscar produtos....."
+        (input)="captureText($event)"
+        (keydown.enter)="handleSearch(searchInput)"
+    />
+    <img 
+        class="img-search"
+        (click)="handleSearch(searchInput)"
+        src="./assets/procurar.png"
+    />
 </div>

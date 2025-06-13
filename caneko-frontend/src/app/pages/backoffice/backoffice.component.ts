@@ -28,7 +28,7 @@ import { ConfigurationPortalComponent } from '../../components/configuration-por
 })
 
 export class BackofficeComponent {
-  routePage: string = '';
+  routePage: string = 'products';
 
   setRoutePageEvent = (routePage: string) => {
     this.routePage = routePage;

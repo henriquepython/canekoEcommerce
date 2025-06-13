@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-search-bar',
@@ -8,5 +8,21 @@ import { Component } from '@angular/core';
   styleUrl: './search-bar.component.scss'
 })
 export class SearchBarComponent {
+  @Output() SearchInputEmit = new EventEmitter<string>();
+  searchInput = '';
 
+  isInvalidInput(input?: string) {
+    return (!input || input === '');
+  }
+
+  handleSearch(input: string) {
+    if (!input || input === '') return;
+
+    this.SearchInputEmit.emit(input);
+  }
+
+  captureText(event: Event) {
+    const inputElement = event.target as HTMLInputElement;
+    this.searchInput = inputElement.value
+  }
 }

@@ -1,33 +1,118 @@
-import { Component, inject } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { ProductService } from '../../services/product.service';
 import { SearchBarComponent } from '../search-bar/search-bar.component';
-import { mockProductFilter } from '../../models/product';
+import { IProductFilterInput, IProductFilterViewModel } from '../../models/product';
 import { AsyncPipe } from '@angular/common';
+import { EditItemsComponent } from '../edit-items/edit-items.component';
+import { Subject, map, takeUntil } from 'rxjs';
+import { PaginationComponent } from '../pagination/pagination.component';
 
 @Component({
   selector: 'app-add-items',
   standalone: true,
-  imports: [SearchBarComponent, AsyncPipe],
+  imports: [
+    SearchBarComponent,
+    EditItemsComponent,
+    AsyncPipe,
+    PaginationComponent
+  ],
   templateUrl: './add-items.component.html',
   styleUrl: './add-items.component.scss'
 })
-export class AddItemsComponent {
+export class AddItemsComponent implements OnInit, OnDestroy {
   private _productService = inject(ProductService);
-  // items$ = [mockProductFilter,mockProductFilter,mockProductFilter];
-  items$ = this._productService.filter({search: '', isStock: false, pageNumber: 1, pageSize: 10});
-  productsMock = [mockProductFilter, mockProductFilter, mockProductFilter, mockProductFilter, mockProductFilter, mockProductFilter, mockProductFilter];
+  private unsub$ = new Subject<void>();
+  items: IProductFilterViewModel[] = [];
+  filterDefault: IProductFilterInput = {
+    search: '',
+    isStock: true,
+    pageNumber: 1,
+    pageSize: 8
+  }
+
+  currentPage = 1;
+  totalPages = 1;
+  isEditModal = false;
+  search = '';
 
   constructor() { }
-
-  async filter() {
-    return await this._productService.filter({search: '', isStock: false, pageNumber: 1, pageSize: 10});
+  ngOnDestroy(): void {
+    this.unsub$.next();
+    this.unsub$.complete();
   }
 
-  async deleteProduct(id: string) {
-    await this._productService.deleteProduct(id);
+  ngOnInit(): void {
+    this._productService.filter(this.filterDefault).subscribe({
+      next: response => {
+        this.items = response.products,
+        this.totalPages = response.totalPages
+      },
+      error: erro => console.error('Erro ao enviar:', erro)
+    });
   }
 
-  async disableProduct(id: string, isDisable: boolean) {
-    await this._productService.disableProduct(id, isDisable);
+  deleteProduct(id: string) {
+    const confirm = window.confirm('Você tem certeza que deseja remover este produto?');
+    
+    if (confirm) {
+      this._productService.deleteProduct(id).subscribe({
+        next: response => {
+          this._productService.filter(this.filterDefault).subscribe({
+            next: responseItem => {
+              this.items = responseItem.products
+              this.totalPages = response.totalPages
+            },
+            error: erro => console.error('Erro ao enviar:', erro)
+          });
+        },
+        error: erro => console.error('Erro ao enviar:', erro)
+      });
+    }    
+  }
+
+  disableProduct(id: string, isDisable: boolean) {
+    const confirm = window.confirm('Você tem certeza que deseja desabilitar este produto?');
+    
+    if (confirm) {
+      this._productService.disableProduct(id, isDisable).subscribe({
+        next: response => {
+          const index = this.items.findIndex(p => p.id === id);
+          const product = this.items.find(p => p.id === id);
+          if (index !== -1 && product) {
+            const newList = [...this.items];
+            product.deleted = isDisable;
+            newList[index] = product;
+            this.items = newList;
+          }
+        },
+        error: erro => console.error('Erro ao enviar:', erro)
+      });
+    }
+  }
+
+  filter(input?: string, page: number = 1, isStock: boolean = false) {
+    this.currentPage = page;
+    
+    if (input) {
+      this.search = input;
+    }
+
+    this._productService.filter({search: input || '', isStock: isStock, pageNumber: page, pageSize: this.filterDefault.pageSize})
+    .pipe(takeUntil(this.unsub$))
+    .subscribe({
+      next: response => {
+        this.items = response.products
+        this.totalPages = response.totalPages
+      },
+      error: erro => console.error('Erro ao enviar:', erro)
+    });
+  }
+
+  openModal() {
+    this.isEditModal = true;
+  }
+
+  closeModal(input: boolean) {
+    this.isEditModal = input;
   }
 }

@@ -1,0 +1,13 @@
+<div class="pagination">
+    <button (click)="mudarPagina(currentPage - 1)" [disabled]="currentPage === 1">◀</button>
+
+    @for (page of pages; track $index) {
+      <button
+        (click)="mudarPagina(page)"
+        [class.active]="page === currentPage">
+        {{ page }}
+      </button>
+    }
+  
+    <button (click)="mudarPagina(currentPage + 1)" [disabled]="currentPage === totalPages">▶</button>
+  </div>

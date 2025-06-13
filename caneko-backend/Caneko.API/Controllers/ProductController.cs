@@ -32,7 +32,7 @@ namespace Caneko.API.Controllers
         }
 
         [HttpGet("filter")]
-        public async Task<ActionResult<IEnumerable<ProductOutputFilterViewModel>>> Filter([FromQuery] ProductInputFilterViewModel filter)
+        public async Task<ActionResult<ProductOutputFilterPaginationViewModel>> Filter([FromQuery] ProductInputFilterViewModel filter)
         {
             try
             {
@@ -120,12 +120,12 @@ namespace Caneko.API.Controllers
             }
         }
 
-        [HttpPatch("disable")]
-        public async Task<IActionResult> DisableProduct(string id, bool isDisable)
+        [HttpPost("disable")]
+        public async Task<IActionResult> DisableProduct([FromBody] ProductDisableInputViewModel input)
         {
             try
             {
-                await _productService.Disable(id, isDisable);
+                await _productService.Disable(input.Id, input.IsDisable);
                 return NoContent();
             }
             catch (Exception ex)

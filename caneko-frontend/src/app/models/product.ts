@@ -5,6 +5,14 @@ export interface IProductFilterInput extends IPageParameters {
     isStock?: boolean;
 }
 
+export interface IProductFilterPagination {
+  products: IProductFilterViewModel[];
+  pageNumber: number;
+  pageSize: number;
+  totalPages: number;
+  total: number;
+}
+
 export interface IProductFilterViewModel {
     id: string;
     sequencialId: string;

@@ -6,7 +6,6 @@ using Caneko.System.Util;
 using Microsoft.Extensions.Configuration;
 using MongoDB.Bson;
 using MongoDB.Driver;
-using SharpCompress.Common;
 
 namespace Caneko.Infra.MongoDb.Repositories
 {
@@ -48,7 +47,9 @@ namespace Caneko.Infra.MongoDb.Repositories
                 if (string.IsNullOrWhiteSpace(id))
                     throw new ArgumentNullException(nameof(id));
 
-                await _Collection.DeleteOneAsync(id);
+                var filter = Builders<Product>.Filter.Eq(x => x.Id, id);
+
+                await _Collection.DeleteOneAsync(filter);
             }
             catch (Exception Ex)
             {
@@ -57,7 +58,7 @@ namespace Caneko.Infra.MongoDb.Repositories
             }
         }
 
-        public async Task<IEnumerable<Product>> Filter(ProductInputFilterViewModel filter)
+        public async Task<(IEnumerable<Product> products, float totalItems)> Filter(ProductInputFilterViewModel filter)
         {
             try
             {
@@ -65,10 +66,7 @@ namespace Caneko.Infra.MongoDb.Repositories
                     throw new ArgumentNullException(nameof(filter));
 
                 var builder = Builders<Product>.Filter;
-                var filters = new List<FilterDefinition<Product>>
-                {
-                    builder.Eq(x => x.Deleted, false)
-                };
+                var filters = new List<FilterDefinition<Product>>();
 
                 // Add search filter  
                 if (!string.IsNullOrWhiteSpace(filter.Search))
@@ -80,13 +78,15 @@ namespace Caneko.Infra.MongoDb.Repositories
                 var combinedFilter = filters.Count > 0 ? builder.And(filters) : builder.Empty;
 
                 // Pagination  
+                var total = await _Collection.CountDocumentsAsync(combinedFilter);
+
                 var skip = (filter.PageNumber - 1) * filter.PageSize;
                 var result = await _Collection.Find(combinedFilter)
                     .Skip(skip)
                     .Limit(filter.PageSize)
                     .ToListAsync();
 
-                return result;
+                return ( result, total );
             }
             catch (Exception Ex)
             {
@@ -159,16 +159,23 @@ namespace Caneko.Infra.MongoDb.Repositories
 
         public async Task Disable(string id, bool isDisable )
         {
-            var filter = Builders<Product>.Filter.And(
-                    Builders<Product>.Filter.Eq(x => x.Id, id),
-                    Builders<Product>.Filter.Eq(x => x.Deleted, false)
-                );
+            try
+            {
 
-            var update = Builders<Product>.Update
-                .Set(p => p.Deleted, isDisable)   // Atualiza o preço
-                .CurrentDate(p => p.UpdateDate); // Adiciona a data de atualização
+                var filter = Builders<Product>.Filter.And(
+                        Builders<Product>.Filter.Eq(x => x.Id, id)
+                    );
 
-            var result = await _Collection.FindOneAndUpdateAsync(filter, update);
+                var update = Builders<Product>.Update
+                    .Set(p => p.Deleted, isDisable)
+                    .Set(p => p.UpdateDate, DateOnly.FromDateTime(DateTime.Now));
+
+                await _Collection.UpdateOneAsync(filter, update);
+
+            } catch (Exception Ex)
+            {
+                throw new ArgumentException("Ocorreu um erro", Ex);
+            }
         }
     }
 }
