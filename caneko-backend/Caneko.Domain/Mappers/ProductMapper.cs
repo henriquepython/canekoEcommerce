@@ -35,6 +35,7 @@ namespace Caneko.Domain.Mappers
             {
                 Id = model.Id ?? string.Empty,
                 SequencialId = model.SequencialId,
+                Description = model.Description,
                 Deleted = model.Deleted,
                 CreateDate = model.CreateDate,
                 UpdateDate = model.UpdateDate,
@@ -77,16 +78,27 @@ namespace Caneko.Domain.Mappers
 
             return new ProductViewModel
             {
+                Id = entity.Id,
                 Deleted = entity.Deleted,
-                SequencialId = entity.SequencialId,
                 CreateDate = entity.CreateDate,
                 UpdateDate = entity.UpdateDate,
                 Name = entity.Name,
                 Description = entity.Description,
+                SequencialId = entity.SequencialId,
                 StockId = entity.StockId,
-                Category = entity.Category,
-                Images = entity.Images,
-                Details = entity.Details,
+                Category = entity.Category.Name,
+                Brand = entity?.Details?.Brand,
+                ImagePrincipalUrl = entity?.Images?.ImagePrincipalUrl,
+                ImageSecondaryUrl = entity?.Images?.ImageSecondaryUrl,
+                Manufacturer = entity?.Details?.Manufacturer,
+                SupplierSale = entity?.Details?.SupplierSale,
+                TechnicalDescription = entity?.Details?.TechnicalDescription,
+                HeightProduct = entity?.Details?.Height,
+                WidthProduct = entity?.Details?.Width,
+                WeightProduct = entity?.Details?.Weight,
+                TypeColor = entity?.Details?.TypeColor,
+                UseRecommend = entity?.Details?.UseRecommend,
+                IsHighlight = entity?.Details?.IsHighlight
             };
         }
     }

@@ -11,7 +11,7 @@ namespace Caneko.Domain.ViewModels.Product
         public string? Description { get; set; }
         public required string SequencialId { get; set; }  // sequencia do produto
         public required string StockId { get; set; }  // id do estoque(estoque, lote e preço)
-        public required Category Category { get; set; }
+        public string CategoryId { get; set; }
         public ProductImages? Images { get; set; }
         public Detail? Details { get; set; }
     }

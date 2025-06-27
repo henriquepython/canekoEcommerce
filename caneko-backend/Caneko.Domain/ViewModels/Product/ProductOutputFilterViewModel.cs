@@ -14,6 +14,9 @@ namespace Caneko.Domain.ViewModels.Product
         [JsonPropertyName("deleted")]
         public bool Deleted { get; set; }
 
+        [JsonPropertyName("description")]
+        public string? Description { get; set; }
+
         [JsonPropertyName("createDate")]
         public DateOnly? CreateDate { get; set; } // tooltip data produto
 
@@ -28,8 +31,8 @@ namespace Caneko.Domain.ViewModels.Product
         public Stock? Stock { get; set; }
         //stock
 
-        [JsonPropertyName("category")]
-        public Category? Category { get; set; }
+        [JsonPropertyName("categoryId")]
+        public string? CategoryId { get; set; }
 
         [JsonPropertyName("images")]
         public ProductImages? Images { get; set; }

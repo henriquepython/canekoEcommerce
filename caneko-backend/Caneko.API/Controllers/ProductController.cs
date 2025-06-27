@@ -47,7 +47,7 @@ namespace Caneko.API.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Product>> GetById(string id)
+        public async Task<ActionResult<ProductViewModel>> GetById(string id)
         {
             try
             {

@@ -33,7 +33,9 @@ export class AddItemsComponent implements OnInit, OnDestroy {
   currentPage = 1;
   totalPages = 1;
   isEditModal = false;
+  isCreated = false;
   search = '';
+  ProductSelected: IProductFilterViewModel | undefined = undefined;
 
   constructor() { }
   ngOnDestroy(): void {
@@ -108,11 +110,18 @@ export class AddItemsComponent implements OnInit, OnDestroy {
     });
   }
 
-  openModal() {
+  openModal(isCreated: boolean, Product?: IProductFilterViewModel) {
+    if(!isCreated && Product) {
+      this.ProductSelected = Product;
+    }
+    
     this.isEditModal = true;
+    this.isCreated = isCreated;
+
   }
 
   closeModal(input: boolean) {
     this.isEditModal = input;
+    this.isCreated = false;
   }
 }

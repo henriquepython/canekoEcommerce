@@ -1,7 +1,217 @@
 <div class="modal-overlay">
   <div class="modal">
-    <h2>Meu Modal</h2>
-    <p>Este é um modal sobre a tela atual!</p>
-    <button (click)="closeModal()">Fechar</button>
+    <div class="container-title-row">
+      @if (IsCreated) {
+        <h1>Criar Produto</h1>
+      } @else {
+        <h1>Editar Produto</h1>
+      }
+      <button class="button-custom" (click)="closeModal()">Fechar</button>
+    </div>
+    <div class="divider"></div>
+    <form [formGroup]="formProduct">
+      <div class="container-input name-input">
+        <label for="name">Nome:</label>
+        <input 
+          id="name"
+          class="text-simple-input"
+          title="Nome"
+          type="text"
+          placeholder="Nome"
+          formControlName="name"
+        />
+      </div>
+      <div class="container-input">
+        <label for="description">Descrição:</label>
+        <input 
+          id="description"
+          class="text-simple-input description-input" 
+          placeholder="Descrição"
+          title="descrição" 
+          type="text" 
+          formControlName="description"
+        />
+      </div>
+      <div class="container-input-row">
+        <div class="container-input">
+          <label for="category">Categoria:</label>
+          <select 
+            id="category"
+            class="select-input"
+            placeholder="Categoria"
+            title="Categoria"
+            type="text"
+            formControlName="category"
+          >
+            <option>teste</option>
+          </select>
+        </div>
+        <div class="container-input">
+          <label for="brand">Marca:</label>
+          <select 
+            id="brand"
+            class="select-input"
+            placeholder="Marca"
+            title="Marca"
+            type="text"
+            formControlName="brand"
+          >
+            <option>teste</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="container-input-row">
+        <div class="container-input">
+          <label for="image-primary">Imagem Principal:</label>
+          <input 
+            id="image-primary"
+            class="file-product image-primary-input"
+            title="imagem principal"
+            type="file"
+            accept=".png, .jpg"
+            formControlName="imagePrincipalUrl"
+          />
+        </div>
+        <div class="container-input">
+          <label for="name">Imagens Secundárias:</label>
+          <input 
+            id="image-secondary"
+            class="file-product image-secondary-input"
+            title="Imagens secundárias"
+            type="file"
+            accept=".png, .jpg"
+            formControlName="imageSecondaryUrl"
+          />
+        </div>
+      </div>
+      <div class="container-input-row">
+        <div class="container-input">
+          <label for="manafacture">Fabricante:</label>
+          <select 
+            id="manafacture"
+            class="select-input"
+            placeholder="Fabricante"
+            title="Fabricante"
+            type="text"
+            formControlName="manufacturer"
+          >
+          <option>
+            tesssssssssss
+          </option>
+          </select>
+        </div>
+        <div class="container-input">
+          <label for="supplier">Fornecedor:</label>
+          <select 
+            id="supplier"
+            class="select-input"
+            placeholder="Fornecedor"
+            title="Fornecedor"
+            type="text"
+            formControlName="supplierSale"
+          >
+            <option>teste</option>
+          </select>
+        </div>
+      </div>
+      <div class="container-input">
+        <label for="description-tech">Descrição Técnica:</label>
+        <input 
+          id="technicalDescription"
+          class="text-simple-input description-tech-input"
+          placeholder="Descrição Técnica"
+          title="Descrição Técnica"
+          type="text"
+          formControlName="technicalDescription"
+        />
+      </div>
+      <div class="container-input-row">
+        <div class="container-input">
+          <label for="height-product">Altura(cm):</label>
+          <input
+            id="height-product"
+            class="size-product height-product-input"
+            title="Altura"
+            type="number"
+            formControlName="heightProduct"
+          />
+        </div>
+        <div class="container-input">
+          <label for="width-product">Largura(cm):</label>
+          <input
+            id="height-product"
+            class="size-product height-product-input"
+            title="Largura"
+            type="number"
+            formControlName="widthProduct"
+          />
+        </div>
+        <div class="container-input">
+          <label for="weight-product">Peso(g):</label>
+          <input
+            id="height-product"
+            class="size-product height-product-input"
+            title="Peso"
+            type="number"
+            formControlName="weightProduct"
+          />
+        </div>
+      </div>
+      <div class="container-size-input-row">
+        <div class="container-input">
+          <label for="type-color">Tipos de Cores:</label>
+          <select 
+            id="type-color"
+            class="select-input"
+            title="Tipos de Cores"
+            type="text"
+            formControlName="typeColor"
+          >
+           <option>teste</option>
+          </select>
+        </div>
+        <div class="container-input">
+          <label for="size-product">Tamanhos:</label>
+          <select 
+            id="size-product"
+            class="select-input"
+            title="Tamanhos"
+            type="text"
+            formControlName="typeSize"
+          >
+            <option>teste</option>
+          </select>
+        </div>
+      </div>
+      <div class="container-input-row">
+        <div class="container-check-input-row">
+          <label for="is-recommend">Uso Recomendado:</label>
+          <select 
+            id="is-recommend"
+            class="select-input"
+            title="Uso Recomendado"
+            type="radio"
+            formControlName="useRecommend"
+          >
+            <option>testes</option>
+          </select>
+        </div>
+        <div class="container-check-input-row">
+          <label for="is-highlight">Produto Destaque:</label>
+          <input
+            id="is-highlight"
+            class="check-product is-highlight-input"
+            title="Produto Destaque"
+            type="radio"
+            formControlName="isHighlight"
+          />
+        </div>
+      </div>
+      <div class="container-size-input-row">
+        <button class="button-custom button-edit-custom">Editar Estoque</button>
+        <button class="button-custom button-edit-custom">Salvar</button>
+      </div>
+    </form>
   </div>
 </div>

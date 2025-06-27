@@ -13,6 +13,10 @@ export class ProductService {
 
   constructor() { }
 
+  getById(id: string) {
+    return this._http.get(`${this.apiProduct}/${id}`);
+  }
+
   createProduct(data: any): Observable<any> {
     return this._http.post(this.apiProduct, data);
   }
@@ -22,7 +26,6 @@ export class ProductService {
   }
 
   filter(filters: IProductFilterInput): Observable<IProductFilterPagination> {
-    console.log("env", environment.apiUrl)
     const params = new HttpParams()
       .set('search', filters.search ?? '' )
       .set('isStock',  filters.isStock ?? false )

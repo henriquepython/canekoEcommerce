@@ -1,8 +1,11 @@
 @if (isEditModal) {
-    <app-edit-items (CloseModalEditItemEmit)="closeModal($event)"/>
+    <app-edit-items [IsCreated]="isCreated" [Product]="ProductSelected" (CloseModalEditItemEmit)="closeModal($event)"/>
 }
 <div class="container">
-    <app-search-bar (SearchInputEmit)="filter($event)" />
+    <div class="container-search">
+        <app-search-bar (SearchInputEmit)="filter($event)" />
+        <button class="button-add-item" (click)="openModal(true)">Adicionar</button>
+    </div>
     <table class="list-items">
         <thead class="header-style">
             <th>
@@ -67,7 +70,7 @@
                     </td>
                     
                     <td class="item-actions-style">
-                        <img title="Editar" (click)="openModal()" class="actions" src="./assets/botao-editar.png"/>
+                        <img title="Editar" (click)="openModal(false, item)" class="actions" src="./assets/botao-editar.png"/>
                         
                         @if (item.deleted) {
                             <img (click)="disableProduct(item.id, !item.deleted)"  title="Habilitar" class="actions" src="./assets/habilitar.png"/>
