@@ -68,7 +68,7 @@ namespace Caneko.Domain.ViewModels.Product
         public string? BussinesUnitId { get; set; }
 
         [JsonPropertyName("useRecommendId")]
-        public string? UseRecommendId { get; set; }
+        public string[]? UseRecommendId { get; set; }
 
         [JsonPropertyName("isHighlight")]
         public bool? IsHighlight { get; set; }

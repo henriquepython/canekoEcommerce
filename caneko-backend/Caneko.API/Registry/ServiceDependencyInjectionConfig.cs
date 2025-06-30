@@ -8,6 +8,7 @@ namespace Caneko.API.Registry
         public static void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<IProductService, ProductService>();
+            services.AddScoped<IBrandService, BrandService>();
         }
     }
 }

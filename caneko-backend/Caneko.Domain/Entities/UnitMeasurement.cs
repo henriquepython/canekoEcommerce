@@ -7,8 +7,8 @@ public class UnitOfMeasurement : BaseEntity
 {
 
     [BsonElement("name")]
-    public string Name { get; set; }
+    public required string Name { get; set; }
 
     [BsonElement("acronym")]
-    public string Acronym { get; set; }
+    public string? Acronym { get; set; }
 }

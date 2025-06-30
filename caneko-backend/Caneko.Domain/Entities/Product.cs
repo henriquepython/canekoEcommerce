@@ -15,9 +15,9 @@ public class Product: BaseEntity
     public string? Description { get; set; }
 
     [BsonElement("stockId")]
-    public string StockId { get; set; }  // id do estoque(estoque, lote e preço)
+    public string? StockId { get; set; }  // id do estoque(estoque, lote e preço)
 
-    [BsonElement("category")]
+    [BsonElement("categoryId")]
     public string? CategoryId { get; set; }
 
     [BsonElement("images")]

@@ -1,12 +1,32 @@
 import { Component } from '@angular/core';
+import { ConfigurationModalComponent } from '../configuration-modal/configuration-modal.component';
+import { ETypeConfig } from '../../utils/enums/typeConfig';
 
 @Component({
   selector: 'app-configuration-portal',
   standalone: true,
-  imports: [],
+  imports: [ConfigurationModalComponent],
   templateUrl: './configuration-portal.component.html',
   styleUrl: './configuration-portal.component.scss'
 })
 export class ConfigurationPortalComponent {
+  isEditModal = false;
+  typeConfig: ETypeConfig = ETypeConfig.Brand;
+  configs = [
+     { name: "Marca", type: ETypeConfig.Brand},
+     { name: "Categoria", type: ETypeConfig.Category},
+     { name: "Fornecedor", type: ETypeConfig.Supplier},
+     { name: "Cores", type: ETypeConfig.Color},
+     { name: "Fabricante", type: ETypeConfig.Manufacturer},
+     { name: "Uso Recomendado", type: ETypeConfig.Recommends}
+    ];
+  
+  closeModal(input: boolean) {
+    this.isEditModal = input;
+  }
 
+  openModal(inputType: ETypeConfig) {
+    this.typeConfig = inputType;
+    this.isEditModal = true;
+  }
 }

@@ -1,1 +1,9 @@
-<p>configuration-portal works!</p>
+@if (isEditModal) {
+    <app-configuration-modal [typeConfig]="typeConfig" (CloseModalEmit)="closeModal($event)"/>
+}
+
+<div class="container">
+    @for (item of configs; track $index) {
+        <button class="custom-button" (click)="openModal(item.type)">{{ item.name }}</button>
+    }
+</div>

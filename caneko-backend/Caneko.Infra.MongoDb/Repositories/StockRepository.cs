@@ -28,9 +28,15 @@ namespace Caneko.Infra.MongoDb.Repositories
 
         public async Task<List<Stock>> FindByIds(List<string> ids)
         {
-            var stocksItems = await _Collection.FindAsync(x => ids.Contains(x.Id) && !x.Deleted);
-
-            return stocksItems.ToList();
+            try
+            {
+                var stocksItems = await _Collection.FindAsync(x => ids.Contains(x.Id) && !x.Deleted);
+                return stocksItems.ToList();
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
         }
 
         public Task<Stock> FindOne(string id)

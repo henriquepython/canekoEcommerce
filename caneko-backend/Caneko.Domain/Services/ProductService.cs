@@ -45,11 +45,11 @@ namespace Caneko.Domain.Services
             var models = result.products.Select(x => x.MapToOutputFilterViewModel());
 
              var stocks = result.products.Select(x => x.StockId)
-                .Where(y => !string.IsNullOrWhiteSpace(y))
+                .Where(y => !string.IsNullOrWhiteSpace(y) && y != null)
                 .Distinct()
                 .ToList();
 
-            if (filter.IsStock && stocks != null && stocks.Any())
+            if (filter.IsStock && stocks.Count != 0)
             {
                 var stocksItems = await _stockRepository.FindByIds(stocks);
 

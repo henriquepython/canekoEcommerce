@@ -1,0 +1,56 @@
+<div class="container">
+<div class="modal-overlay">
+    <div class="modal">
+      <div class="container-title-row">
+        <h1>{{ typeConfig }}</h1>
+        <button class="button-custom" (click)="closeModal()">Fechar</button>
+      </div>
+      <div class="divider"></div>
+      <div class="container-main">
+        <div class="container-search">
+            <app-search-bar (SearchInputEmit)="filterBrands($event)" />
+            <button class="button-add-item" (click)="openModal(true)">Adicionar</button>
+        </div>
+        <table class="list-items">
+            <thead class="header-style">
+                <th>
+                    Nome
+                </th>
+                <th>
+                Ações
+                </th>
+            </thead>
+            <tbody>
+                @for (item of items; track $index) {
+                    <tr class="item">
+                        <td class="item-name-style">
+                            <!-- {{item?.name}} -->
+                            teste
+                        </td>
+                        
+                        <td class="item-actions-style">
+                            <img title="Editar" (click)="openModal(false, item)" class="actions" src="./assets/botao-editar.png"/>
+                            
+                            @if (item.deleted) {
+                                <img (click)="disableItem(item.id, !item.deleted)"  title="Habilitar" class="actions" src="./assets/habilitar.png"/>
+                            } @else {
+                                <img (click)="disableItem(item.id, !item.deleted)" title="Desabilitar" class="actions" src="./assets/desabilitar.png"/>
+                            }
+                            
+                            <img  title="Excluir" class="actions" (click)="deleteItem(item.id)" src="./assets/excluir.png"/>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <tfoot>
+            <app-pagination
+                [totalPages]="totalPages"
+                [currentPage]="currentPage"
+                (pageChange)="filterBrands(search, $event)"
+            />
+        </tfoot>
+    </div>
+  </div>
+</div>
+</div>

@@ -17,8 +17,8 @@ export interface IProductFilterViewModel {
     id: string;
     sequencialId: string;
     deleted: boolean;
-    createDate?: string; // tooltip data produto
-    updateDate?: string; // tooltip data produto
+    createDate?: string;
+    updateDate?: string;
     name: string;
     description?: string;
   
@@ -42,26 +42,51 @@ export interface ICategory extends BaseEntity {
     name?: string;
 }
 
+export interface IBrand extends BaseEntity {
+    name?: string;
+}
+
+export interface IColorItem extends BaseEntity {
+    name?: string;
+}
+
+export interface IManufacturer extends BaseEntity {
+    name?: string;
+}
+
+export interface ISupplier extends BaseEntity {
+    name?: string;
+}
+
+export interface IUseRecommend extends BaseEntity {
+    name?: string;
+}
+
+export interface IUnitMeasurement extends BaseEntity {
+    name?: string;
+    acronym?: string;
+}
+
 export interface IProductImages extends BaseEntity {
     imagePrincipalUrl: string;
     imageSecondaryUrl: string[];
 }
 
 export interface IDetail {
-    brand: string; // Marca
-    useRecommendId?: string; // Uso recomendado (ex.: casa)
-    technicalDescription?: string; // Descrição técnica
-    manufacturerId?: string; // Fabricante
+    brand: string;
+    useRecommendId?: string;
+    technicalDescription?: string;
+    manufacturerId?: string;
     assessment?: number; // Média de avaliações (ex.: 4.5 estrelas)
     height?: number;
     width?: number;
     weight?: number;
-    typeColorId?: string; // Tipos de cores para venda
-    bussinesUnitId?: string; // Tamanhos diversos
-    typeUnitId?: string; // Tamanhos diversos
-    size?: number; // Tamanhos diversos
-    isHighlight: boolean; // Indica se é destaque
-    supplierSaleId?: string; // Vendedor (ex.: própria marca Caneko)
+    typeColorId?: string;
+    bussinesUnitId?: string;
+    typeUnitId?: string;
+    size?: number;
+    isHighlight: boolean;
+    supplierSaleId?: string;
 }  
 
 export interface ILot {

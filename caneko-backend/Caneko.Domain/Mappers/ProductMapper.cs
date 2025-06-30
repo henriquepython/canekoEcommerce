@@ -18,7 +18,7 @@ namespace Caneko.Domain.Mappers
                 StockId = string.Empty,
                 Name = model.Name,
                 Description = model.Description,
-                Category = model.Category,
+                CategoryId = model.CategoryId,
                 Images = model.Images,
                 Details = model.Details,
             };
@@ -40,8 +40,8 @@ namespace Caneko.Domain.Mappers
                 CreateDate = model.CreateDate,
                 UpdateDate = model.UpdateDate,
                 Name = model.Name,
-                Stock = new Stock() { Id = model.Id},
-                Category = model.Category,
+                Stock = new Stock() { Id = model.StockId, ProductId = model.Id ?? string.Empty},
+                CategoryId = model.CategoryId,
                 Images = model.Images,
                 Details = model.Details,
             };
@@ -63,7 +63,7 @@ namespace Caneko.Domain.Mappers
                 Name = model.Name,
                 Description = model.Description,
                 StockId = model.StockId,
-                Category = model.Category,
+                CategoryId = model.CategoryId,
                 Images = model.Images,
                 Details = model.Details,
             };
@@ -86,18 +86,18 @@ namespace Caneko.Domain.Mappers
                 Description = entity.Description,
                 SequencialId = entity.SequencialId,
                 StockId = entity.StockId,
-                Category = entity.Category.Name,
-                Brand = entity?.Details?.Brand,
+                CategoryId = entity.CategoryId,
+                BrandId = entity?.Details?.BrandId,
                 ImagePrincipalUrl = entity?.Images?.ImagePrincipalUrl,
                 ImageSecondaryUrl = entity?.Images?.ImageSecondaryUrl,
-                Manufacturer = entity?.Details?.Manufacturer,
-                SupplierSale = entity?.Details?.SupplierSale,
+                ManufacturerId = entity?.Details?.ManufacturerId,
+                SupplierSaleId = entity?.Details?.SupplierSaleId,
                 TechnicalDescription = entity?.Details?.TechnicalDescription,
                 HeightProduct = entity?.Details?.Height,
                 WidthProduct = entity?.Details?.Width,
                 WeightProduct = entity?.Details?.Weight,
-                TypeColor = entity?.Details?.TypeColor,
-                UseRecommend = entity?.Details?.UseRecommend,
+                TypeColorId = entity?.Details?.TypeColorId,
+                UseRecommendId = entity?.Details?.UseRecommendId,
                 IsHighlight = entity?.Details?.IsHighlight
             };
         }

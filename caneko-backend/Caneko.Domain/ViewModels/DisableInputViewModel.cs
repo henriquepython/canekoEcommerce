@@ -1,8 +1,8 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace Caneko.Domain.ViewModels.Product
+namespace Caneko.Domain.ViewModels
 {
-    public class ProductDisableInputViewModel
+    public class DisableInputViewModel
     {
         [JsonPropertyName("id")]
         public required string Id { get; set; }

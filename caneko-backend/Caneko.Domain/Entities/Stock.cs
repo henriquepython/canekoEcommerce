@@ -4,7 +4,7 @@ namespace Caneko.Domain.Entities
 {
     public class Stock: BaseEntity
     {
-        public string ProductId { get; set; }
+        public required string ProductId { get; set; }
         public List<Lot>? Lot { get; set; } = new List<Lot>();
         //Preço de fabrica
         [MinLength(0)]

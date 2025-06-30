@@ -13,7 +13,6 @@ import { PaginationComponent } from '../pagination/pagination.component';
   imports: [
     SearchBarComponent,
     EditItemsComponent,
-    AsyncPipe,
     PaginationComponent
   ],
   templateUrl: './add-items.component.html',
@@ -35,22 +34,25 @@ export class AddItemsComponent implements OnInit, OnDestroy {
   isEditModal = false;
   isCreated = false;
   search = '';
-  ProductSelected: IProductFilterViewModel | undefined = undefined;
+  ProductSelected?: IProductFilterViewModel = undefined;
 
   constructor() { }
+  
+  ngOnInit(): void {
+    this._productService.filter(this.filterDefault)
+      .pipe(takeUntil(this.unsub$))
+      .subscribe({
+        next: response => {
+          this.items = response.products,
+          this.totalPages = response.totalPages
+        },
+        error: erro => console.error('Erro ao enviar:', erro)
+      });
+  }
+  
   ngOnDestroy(): void {
     this.unsub$.next();
     this.unsub$.complete();
-  }
-
-  ngOnInit(): void {
-    this._productService.filter(this.filterDefault).subscribe({
-      next: response => {
-        this.items = response.products,
-        this.totalPages = response.totalPages
-      },
-      error: erro => console.error('Erro ao enviar:', erro)
-    });
   }
 
   deleteProduct(id: string) {

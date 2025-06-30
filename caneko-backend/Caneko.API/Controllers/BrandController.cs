@@ -1,28 +1,28 @@
-﻿using Caneko.Domain.Entities;
+using Caneko.Domain.Entities;
 using Caneko.Domain.Interfaces.Service;
 using Caneko.Domain.ViewModels;
-using Caneko.Domain.ViewModels.Product;
+using Caneko.Domain.ViewModels.Brand;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Caneko.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProductController : ControllerBase
+    public class BrandController : ControllerBase
     {
-        private readonly IProductService _productService;
+        private readonly IBrandService _brandService;
 
-        public ProductController(IProductService productService)
+        public BrandController(IBrandService brandService)
         {
-            _productService = productService ?? throw new ArgumentNullException(nameof(productService), "Product service cannot be null");
+            _brandService = brandService ?? throw new ArgumentNullException(nameof(brandService), "Product service cannot be null");
         }
-
+        
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Product>>> GetAll()
+        public async Task<ActionResult<IEnumerable<Brand>>> GetAll()
         {
             try
             {
-                var products = await _productService.GetAll();
+                var products = await _brandService.GetAll();
                 return Ok(products);
 
             }
@@ -33,11 +33,11 @@ namespace Caneko.API.Controllers
         }
 
         [HttpGet("filter")]
-        public async Task<ActionResult<ProductOutputFilterPaginationViewModel>> Filter([FromQuery] ProductInputFilterViewModel filter)
+        public async Task<ActionResult<BrandOutputFilterPaginationViewModel>> Filter([FromQuery] BrandInputFilterViewModel filter)
         {
             try
             {
-                var products = await _productService.Filter(filter);
+                var products = await _brandService.Filter(filter);
                 return Ok(products);
 
             }
@@ -48,11 +48,11 @@ namespace Caneko.API.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<ProductViewModel>> GetById(string id)
+        public async Task<ActionResult<BrandViewModel>> GetById(string id)
         {
             try
             {
-                var product = await _productService.FindOne(id);
+                var product = await _brandService.FindOne(id);
                 if (product == null)
                 {
                     return NotFound($"Product with ID {id} not found.");
@@ -66,7 +66,7 @@ namespace Caneko.API.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<ProductViewModel>> Create([FromBody] ProductCreateViewModel product)
+        public async Task<ActionResult<BrandViewModel>> Create([FromBody] BrandCreateViewModel product)
         {
             if (product == null)
             {
@@ -75,7 +75,7 @@ namespace Caneko.API.Controllers
 
             try
             {
-                var createdProduct = await _productService.Create(product);
+                var createdProduct = await _brandService.Create(product);
                 return Ok(createdProduct);
             }
             catch (Exception ex)
@@ -85,7 +85,7 @@ namespace Caneko.API.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult<ProductViewModel>> Update(string id, [FromBody] ProductUpdateViewModel product)
+        public async Task<ActionResult<BrandViewModel>> Update(string id, [FromBody] BrandUpdateViewModel product)
         {
             if (product == null)
             {
@@ -94,7 +94,7 @@ namespace Caneko.API.Controllers
 
             try
             {
-                var updatedProduct = await _productService.Update(id, product);
+                var updatedProduct = await _brandService.Update(id, product);
                 if (updatedProduct == null)
                 {
                     return NotFound($"Product with ID {id} not found.");
@@ -112,7 +112,7 @@ namespace Caneko.API.Controllers
         {
             try
             {
-                await _productService.Delete(id);
+                await _brandService.Delete(id);
                 return NoContent();
             }
             catch (Exception ex)
@@ -122,11 +122,11 @@ namespace Caneko.API.Controllers
         }
 
         [HttpPost("disable")]
-        public async Task<IActionResult> DisableProduct([FromBody] DisableInputViewModel input)
+        public async Task<IActionResult> Disable([FromBody] DisableInputViewModel input)
         {
             try
             {
-                await _productService.Disable(input.Id, input.IsDisable);
+                await _brandService.Disable(input.Id, input.IsDisable);
                 return NoContent();
             }
             catch (Exception ex)
@@ -134,5 +134,6 @@ namespace Caneko.API.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, $"Internal server error: {ex.Message}");
             }
         }
+
     }
 }

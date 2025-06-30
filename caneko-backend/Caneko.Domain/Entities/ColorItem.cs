@@ -6,5 +6,5 @@ namespace Caneko.Domain.Entities;
 public class ColorItem : BaseEntity
 {
     [BsonElement("name")]
-    public string Name { get; set; }
+    public required string Name { get; set; }
 }

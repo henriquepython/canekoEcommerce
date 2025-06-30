@@ -1,25 +1,47 @@
-﻿namespace Caneko.Domain.Entities
+﻿using MongoDB.Bson.Serialization.Attributes;
+
+namespace Caneko.Domain.Entities
 {
     public class Detail
     {
-        //Marca
+        [BsonElement("brandId")]
         public string? BrandId { get; set; }
-        //Use recomendado ex. casa
-        public string? UseRecommendId { get; set; }
-        //Descrição tecnica
+        
+        [BsonElement("useRecommendId")]
+        public string[]? UseRecommendId { get; set; }
+       
+       
+        [BsonElement("technicalDescription")]
         public string? TechnicalDescription { get; set; }
-        //Fabricante
+        
+        [BsonElement("manufacturerId")]
         public string? ManufacturerId { get; set; }
-        //avaliação
+        
+        [BsonElement("assessment")]
         public double? Assessment { get; set; }  // Média de avaliações dos clientes (ex.: 4.5 estrelas)
-        public int? Height { get; set; }
-        public int? Width { get; set; }
-        public int? Weight { get; set; }
-        public string? TypeColorId { get; set; } // tipos de cores para vender
-        public double? Size { get; set; } // tamanhos diversos
-        public string? BussinesUnitId { get; set; } // tamanhos diversos
-        public bool IsHighlight { get; set; } // destaque
 
-        public string? SupplierSaleId { get; set; } // quem vende é a proopria caneko?
+        [BsonElement("height")]
+        public int? Height { get; set; }
+
+        [BsonElement("width")]
+        public int? Width { get; set; }
+
+        [BsonElement("weight")]
+        public int? Weight { get; set; }
+
+        [BsonElement("typeColorId")]
+        public string? TypeColorId { get; set; }
+
+        [BsonElement("size")]
+        public double? Size { get; set; }
+
+        [BsonElement("bussinesUnitId")]
+        public string? BussinesUnitId { get; set; }
+
+        [BsonElement("isHighlight")]
+        public bool IsHighlight { get; set; }
+
+        [BsonElement("supplierSaleId")]
+        public string? SupplierSaleId { get; set; }
     }
 }

@@ -1,0 +1,27 @@
+.container {
+    margin: 0 0.4rem;
+    height: 86vh;
+    border-radius: 1rem;
+    background-color: none;
+    display: grid;
+    grid-template-columns: 400px 400px;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+
+.custom-button {
+    height: 300px;
+    width: 400px;
+    border-radius: 1rem;
+    color: #EAE2D6;
+    background-color: #684A3D;
+    font-weight: bold;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.custom-button:hover {
+    color: #684A3D;
+    background-color: #EAE2D6;
+}
