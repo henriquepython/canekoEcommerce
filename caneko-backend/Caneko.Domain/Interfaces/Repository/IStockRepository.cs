@@ -1,9 +1,8 @@
 ﻿using Caneko.Domain.Entities;
 
-namespace Caneko.Domain.Interfaces.Repository
+namespace Caneko.Domain.Interfaces.Repository;
+
+public interface IStockRepository : IGenericRepository<Stock>
 {
-    public interface IStockRepository : IGenericRepository<Stock>
-    {
-        Task<List<Stock>> FindByIds(List<string> ids);
-    }
+    Task<List<Stock>> FindByIds(List<string> ids);
 }

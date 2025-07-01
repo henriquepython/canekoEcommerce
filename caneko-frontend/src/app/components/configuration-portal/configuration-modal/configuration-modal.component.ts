@@ -1,13 +1,10 @@
-import { Component, EventEmitter, inject, input, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { Subject, takeUntil } from 'rxjs';
-import { ProductService } from '../../services/product.service';
-import { PaginationComponent } from '../pagination/pagination.component';
-import { HttpClient, HttpParams } from '@angular/common/http';
-import { environment } from '../../../environments/environment';
-import { SearchBarComponent } from '../search-bar/search-bar.component';
-import { BrandService } from '../../services/brand.service';
-import { IBrandFilterInput, IBrandFilterPagination, IBrandFilterViewModel } from '../../models/brand';
-import { ETypeConfig } from '../../utils/enums/typeConfig';
+import { PaginationComponent } from '../../pagination/pagination.component';
+import { SearchBarComponent } from '../../search-bar/search-bar.component';
+import { BrandService } from '../../../services/brand.service';
+import { IBrandFilterInput, IBrandFilterViewModel } from '../../../models/brand';
+import { ETypeConfig } from '../../../utils/enums/typeConfig';
 
 @Component({
   selector: 'app-configuration-modal',

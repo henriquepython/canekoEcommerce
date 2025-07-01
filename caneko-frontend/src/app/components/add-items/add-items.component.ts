@@ -1,11 +1,10 @@
 import { Component, OnDestroy, OnInit, inject } from '@angular/core';
-import { ProductService } from '../../services/product.service';
-import { SearchBarComponent } from '../search-bar/search-bar.component';
+import { Subject, takeUntil } from 'rxjs';
 import { IProductFilterInput, IProductFilterViewModel } from '../../models/product';
-import { AsyncPipe } from '@angular/common';
-import { EditItemsComponent } from '../edit-items/edit-items.component';
-import { Subject, map, takeUntil } from 'rxjs';
+import { ProductService } from '../../services/product.service';
 import { PaginationComponent } from '../pagination/pagination.component';
+import { SearchBarComponent } from '../search-bar/search-bar.component';
+import { EditItemsComponent } from './edit-items/edit-items.component';
 
 @Component({
   selector: 'app-add-items',

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ConfigurationModalComponent } from '../configuration-modal/configuration-modal.component';
+import { ConfigurationModalComponent } from './configuration-modal/configuration-modal.component';
 import { ETypeConfig } from '../../utils/enums/typeConfig';
 
 @Component({

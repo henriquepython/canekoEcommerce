@@ -1,8 +1,8 @@
-import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, inject } from '@angular/core';
-import { ProductService } from '../../services/product.service';
+import { Component, EventEmitter, Input, OnChanges, OnDestroy, Output, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
-import { IProductFilterViewModel } from '../../models/product';
+import { IProductFilterViewModel } from '../../../models/product';
+import { ProductService } from '../../../services/product.service';
 
 @Component({
   selector: 'app-edit-items',
