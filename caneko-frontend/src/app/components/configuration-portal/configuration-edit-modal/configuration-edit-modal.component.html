@@ -1,0 +1,29 @@
+<div class="modal-overlay">
+  <div class="modal">
+    <div class="container-title-row">
+      @if (IsCreated) {
+        <h1>Criar Produto</h1>
+      } @else {
+        <h1>Editar Produto</h1>
+      }
+      <button class="button-custom" (click)="closeEditModal()">Fechar</button>
+    </div>
+    <div class="divider"></div>
+    <form>
+      <div class="container-input name-input">
+        <label for="name">Nome:</label>
+        <input 
+          id="name"
+          class="text-simple-input"
+          title="Nome"
+          type="text"
+          placeholder="Nome"
+          formControlName="name"
+        />
+      </div>
+      <div class="container-size-input-row">
+        <button class="button-custom button-edit-custom" (click)="createOrUpdateItem()">Salvar</button>
+      </div>
+    </form>
+  </div>
+</div>

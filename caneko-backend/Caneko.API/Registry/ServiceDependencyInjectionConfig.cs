@@ -9,6 +9,11 @@ namespace Caneko.API.Registry
         {
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<IBrandService, BrandService>();
+            services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<ISupplierService, SupplierService>();
+            services.AddScoped<IManufacturerService, ManufacturerService>();
+            services.AddScoped<IColorItemService, ColorItemService>();
+            services.AddScoped<IRecommendService, RecommendService>();
         }
     }
 }

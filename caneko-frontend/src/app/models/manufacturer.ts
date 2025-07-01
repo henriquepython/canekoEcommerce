@@ -1,19 +1,7 @@
-import { IPageParameters } from "./base";
+import { IFilterInput, IFilterPagination, IFilterViewModel } from "./generic";
 
-export interface IManufacturerFilterInput extends IPageParameters {
-    search: string
-}
+export interface IManufacturerFilterInput extends IFilterInput { }
 
-export interface IManufacturerFilterViewModel {
-    id: string,
-    deleted: boolean,
-    createdDate?: string,
-    updateDate?: string,
-    name: string
-}
+export interface IManufacturerFilterViewModel extends IFilterViewModel { }
 
-export interface IManufacturerFilterPagination extends IPageParameters {
-    items: IManufacturerFilterViewModel[];
-    totalPages: number;
-    total: number;
-}
+export interface IManufacturerFilterPagination extends IFilterPagination { }

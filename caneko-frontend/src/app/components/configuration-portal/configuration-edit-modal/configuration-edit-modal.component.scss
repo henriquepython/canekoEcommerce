@@ -1,0 +1,169 @@
+.modal-overlay {
+  position: fixed;
+  z-index: 1000;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.6); /* Bloqueia interação no fundo */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+  
+.modal {
+  width: 750px; height: 300px;
+  position: fixed;
+  flex-direction: column;
+  background-color: #B39C85;
+  padding: 0 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+button {
+  margin-top: 10px;
+  padding: 8px 12px;
+}
+
+.divider {
+  border: 1px solid #684A3D;
+  width: 100%;
+}
+
+.container-input {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 1.2rem;
+}
+
+.container-input-row {
+  display: flex;
+  flex-direction: row;
+  gap: 3rem;
+}
+
+.container-title-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.container-check-input-row {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.2rem;
+  
+}
+
+.container-size-input-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.text-simple-input {
+  width: 95%;
+  height: 2rem;
+  border: 1px solid #684A3D;
+  border-radius: 1rem;
+  background: none;
+  font-size: 1.2rem;
+  color: #413029;
+  padding: 0.2rem 0.7rem;
+}
+
+.text-color-simple-input {
+  width: 85%;
+  height: 2rem;
+  border: 1px solid #684A3D;
+  border-radius: 1rem;
+  background: none;
+  font-size: 1.2rem;
+  color: #413029;
+  padding: 0.2rem 0.7rem;
+}
+
+.text-secondary-input {
+  width: 40%;
+  height: 2rem;
+  border: 1px solid #684A3D;
+  border-radius: 1rem;
+  background: none;
+  font-size: 1.2rem;
+  color: #413029;
+  padding: 0.2rem 0.7rem;
+}
+
+.text-secondary-brand-input {
+  height: 2rem;
+  border: 1px solid #684A3D;
+  border-radius: 1rem;
+  background: none;
+  font-size: 1.2rem;
+  color: #413029;
+  padding: 0.2rem 0.7rem;
+}
+
+.size-product {
+  width: 30%;
+  height: 2rem;
+  border: 1px solid #684A3D;
+  border-radius: 1rem;
+  background: none;
+  font-size: 1.2rem;
+  color: #413029;
+  padding: 0.2rem 0.7rem;
+}
+
+.file-product {
+  width: 21rem;
+  font-size: 1rem;
+  color: #413029;
+}
+
+.check-product {
+  height: 1.5rem;
+  width: 1.5rem;
+  cursor: pointer;
+  color: #413029;
+}
+
+.button-custom {
+  height: 48px;
+  background-color: #FFFFFF;
+  border: 1px solid #684A3D;
+  border-radius: 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+  color: #684A3D;
+}
+
+.button-edit-custom {
+  margin-top: 1rem;
+}
+
+.button-custom:hover {
+  background-color: #684A3D;
+  color: #FFFFFF;
+}
+
+.name-input {
+  margin-top: 1.5rem;
+}
+
+.select-input {
+  width: 14rem;
+  cursor: pointer;
+  height: 2.7rem;
+  border: 1px solid #684A3D;
+  border-radius: 1rem;
+  background: none;
+  font-size: 1.2rem;
+  color: #413029;
+  padding: 0.2rem 0.7rem;
+}

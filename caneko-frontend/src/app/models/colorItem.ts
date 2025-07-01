@@ -1,19 +1,7 @@
-import { IPageParameters } from "./base";
+import { IFilterInput, IFilterPagination, IFilterViewModel } from "./generic";
 
-export interface IColorItemFilterInput extends IPageParameters {
-    search: string
-}
+export interface IColorItemFilterInput extends IFilterInput { }
 
-export interface IColorItemFilterViewModel {
-    id: string,
-    deleted: boolean,
-    createdDate?: string,
-    updateDate?: string,
-    name: string
-}
+export interface IColorItemFilterViewModel extends IFilterViewModel { }
 
-export interface IColorItemFilterPagination extends IPageParameters {
-    items: IColorItemFilterViewModel[];
-    totalPages: number;
-    total: number;
-}
+export interface IColorItemFilterPagination extends IFilterPagination { }

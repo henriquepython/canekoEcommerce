@@ -2,7 +2,6 @@ using Caneko.Domain.Entities;
 using Caneko.Domain.Interfaces.Service;
 using Caneko.Domain.ViewModels;
 using Caneko.Domain.ViewModels.Category;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Caneko.API.Controllers

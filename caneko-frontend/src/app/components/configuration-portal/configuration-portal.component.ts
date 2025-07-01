@@ -10,7 +10,7 @@ import { ETypeConfig } from '../../utils/enums/typeConfig';
   styleUrl: './configuration-portal.component.scss'
 })
 export class ConfigurationPortalComponent {
-  isEditModal = false;
+  isEditConfigModal = false;
   typeConfig: ETypeConfig = ETypeConfig.Brand;
   configs = [
      { name: "Marca", type: ETypeConfig.Brand},
@@ -22,11 +22,11 @@ export class ConfigurationPortalComponent {
     ];
   
   closeModal(input: boolean) {
-    this.isEditModal = input;
+    this.isEditConfigModal = input;
   }
 
   openModal(inputType: ETypeConfig) {
     this.typeConfig = inputType;
-    this.isEditModal = true;
+    this.isEditConfigModal = true;
   }
 }

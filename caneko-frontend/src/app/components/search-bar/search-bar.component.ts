@@ -11,13 +11,7 @@ export class SearchBarComponent {
   @Output() SearchInputEmit = new EventEmitter<string>();
   searchInput = '';
 
-  isInvalidInput(input?: string) {
-    return (!input || input === '');
-  }
-
   handleSearch(input: string) {
-    if (!input || input === '') return;
-
     this.SearchInputEmit.emit(input);
   }
 
