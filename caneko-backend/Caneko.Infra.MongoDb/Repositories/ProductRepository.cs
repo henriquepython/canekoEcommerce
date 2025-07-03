@@ -26,9 +26,9 @@ namespace Caneko.Infra.MongoDb.Repositories
                 if (entity == null) 
                     throw new ArgumentNullException(nameof(entity));
 
-                entity.SequencialId = NumberGenerator.GetShortHashByDateNow();
-                entity.CreateDate = DateOnly.FromDateTime(DateTime.Now);
-                entity.Deleted = false;
+                entity.SetSequencialId(NumberGenerator.GetShortHashByDateNow());
+                entity.SetCreateDate(DateOnly.FromDateTime(DateTime.Now));
+                entity.SetDeleted(false);
 
                 await _Collection.InsertOneAsync(entity);
                 return entity;
@@ -145,7 +145,7 @@ namespace Caneko.Infra.MongoDb.Repositories
                     ReturnDocument = ReturnDocument.After
                 };
 
-                entity.UpdateDate = DateOnly.FromDateTime(DateTime.Now);
+                entity.SetUpdateDate(DateOnly.FromDateTime(DateTime.Now));
 
                 var result = await _Collection.FindOneAndReplaceAsync(filter, entity, options);
 

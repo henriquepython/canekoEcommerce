@@ -43,12 +43,9 @@ public static class BrandMapper
                 throw new ArgumentNullException(nameof(model), "Product model cannot be null");
             }
 
-            return new Brand
+            return new Brand(model.Deleted, model.CreateDate, model.UpdateDate)
             {
                 Id = model.Id,
-                CreateDate = model.CreateDate,
-                UpdateDate = model.UpdateDate,
-                Deleted = model.Deleted,
                 Name = model.Name,
             };
         }

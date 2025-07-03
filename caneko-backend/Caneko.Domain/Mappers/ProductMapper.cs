@@ -14,7 +14,6 @@ namespace Caneko.Domain.Mappers
 
             return new Product
             {
-                SequencialId = string.Empty,
                 StockId = string.Empty,
                 Name = model.Name,
                 Description = model.Description,
@@ -54,12 +53,8 @@ namespace Caneko.Domain.Mappers
                 throw new ArgumentNullException(nameof(model), "Product model cannot be null");
             }
 
-            return new Product
+            return new Product(model.Deleted, model.CreateDate, model.UpdateDate, model.SequencialId)
             {
-                Deleted = model.Deleted,
-                SequencialId = model.SequencialId,
-                CreateDate = model.CreateDate,
-                UpdateDate = model.UpdateDate,
                 Name = model.Name,
                 Description = model.Description,
                 StockId = model.StockId,

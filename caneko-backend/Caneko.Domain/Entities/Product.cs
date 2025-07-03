@@ -3,10 +3,25 @@
 namespace Caneko.Domain.Entities;
 
 [BsonIgnoreExtraElements]
-public class Product: BaseEntity
+public class Product : BaseEntity
 {
+    public Product(bool deleted = false, DateOnly? createDate = null, DateOnly? updateDate = null)
+        : base(deleted, createDate, updateDate)
+    {
+    }
+
+    public Product(bool deleted = false, DateOnly? createDate = null, DateOnly? updateDate = null, string? sequencialId = null)
+        : base(deleted, createDate, updateDate)
+    {
+        SetSequencialId(sequencialId ?? string.Empty);
+    }
+
+    public Product()
+    {
+    }
+
     [BsonElement("sequencialId")]
-    public required string SequencialId { get; set; }  // sequencia do produto
+    public string? SequencialId { get; private set; }
 
     [BsonElement("name")]
     public required string Name { get; set; }
@@ -25,4 +40,12 @@ public class Product: BaseEntity
 
     [BsonElement("details")]
     public Detail? Details { get; set; }
+    
+    public void SetSequencialId(string sequencialId)
+    {
+        if (string.IsNullOrWhiteSpace(sequencialId))
+            throw new ArgumentException("SequencialId cannot be null or empty.", nameof(sequencialId));
+
+        SequencialId = sequencialId;
+    }
 }

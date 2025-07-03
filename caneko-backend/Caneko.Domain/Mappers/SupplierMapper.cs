@@ -40,12 +40,9 @@ public static class SupplierMapper
         {
             throw new ArgumentNullException(nameof(model), "Model cannot be null");
         }
-        return new Supplier
+        return new Supplier(model.Deleted, model.CreateDate, model.UpdateDate)
         {
             Id = model.Id,
-            CreateDate = model.CreateDate,
-            UpdateDate = model.UpdateDate,
-            Deleted = model.Deleted,
             Name = model.Name,
         };
     }

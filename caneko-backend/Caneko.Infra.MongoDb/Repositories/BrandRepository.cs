@@ -25,8 +25,8 @@ public class BrandRepository : GenericMongoRepository<Brand>, IBrandRepository
                 if (entity == null) 
                     throw new ArgumentNullException(nameof(entity));
 
-                entity.CreateDate = DateOnly.FromDateTime(DateTime.Now);
-                entity.Deleted = false;
+                entity.SetCreateDate(DateOnly.FromDateTime(DateTime.Now));
+                entity.SetDeleted(false);
 
                 await _Collection.InsertOneAsync(entity);
                 return entity;
@@ -140,7 +140,7 @@ public class BrandRepository : GenericMongoRepository<Brand>, IBrandRepository
                     ReturnDocument = ReturnDocument.After
                 };
 
-                entity.UpdateDate = DateOnly.FromDateTime(DateTime.Now);
+                entity.SetUpdateDate(DateOnly.FromDateTime(DateTime.Now));
 
                 var result = await _Collection.FindOneAndReplaceAsync(filter, entity, options);
 
